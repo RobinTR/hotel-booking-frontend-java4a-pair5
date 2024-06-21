@@ -1,0 +1,29 @@
+.small-carousel {
+    max-width: 800px;
+    /* Örneğin, genişliği 600 piksel ile sınırlandırın */
+    margin: 0 auto;
+    /* Ortalamak için */
+}
+
+.small-carousel img {
+    height: auto;
+    /* Oranı korumak için */
+    width: 100%;
+    /* Genişliğin %100 olmasını sağlayın */
+}
+
+.button-deactive:active,
+.button-deactive:focus {
+    outline: none;
+    /* Odaklanma ve tıklama sırasında oluşan kenarlığı kaldırır */
+    box-shadow: none;
+    /* Tıklama sırasında oluşan gölgeyi kaldırır */
+}
+
+.modal-dialog {
+    max-width: 80%;
+    padding-top: 50px;
+    width: 60%;
+    height: 80%;
+    margin: auto;
+}
