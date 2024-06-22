@@ -1,10 +1,12 @@
 import path from 'path';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { Routes } from '@angular/router';
-import { HomepageComponent } from './shared/components/homepage/homepage.component';
-import { AboutComponent } from './shared/components/about/about.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AboutComponent } from './pages/about/about.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
+import { BookingComponent } from './pages/booking/booking.component';
+import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
 
 export const routes: Routes = [
   {
@@ -18,6 +20,14 @@ export const routes: Routes = [
       {
         path: "about",
         component: AboutComponent
+      },
+      {
+        path: "booking",
+        component: BookingComponent
+      },
+      {
+        path: "hoteldetails",
+        component: HotelDetailsComponent
       }
     ]
   },
