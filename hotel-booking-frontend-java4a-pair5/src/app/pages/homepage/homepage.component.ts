@@ -14,5 +14,5 @@ import { ArrowUpComponent } from '../../shared/components/arrow-up/arrow-up.comp
   ]
 })
 export class HomepageComponent {
-
+  
 }
