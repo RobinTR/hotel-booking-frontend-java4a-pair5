@@ -1,36 +1,44 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { HotelListItem } from '../../models/hotel-list-item';
 import { HotelsService } from '../../services/hotels.service';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { PaginatedList } from '../../../../core/models/paginated-list';
 import { HotelCardComponent } from '../hotel-card/hotel-card.component';
+import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 
 @Component({
   selector: 'app-hotel-list',
   standalone: true,
-  imports: [CommonModule, HotelCardComponent],
+  imports: [CommonModule, HotelCardComponent, PaginationComponent],
   templateUrl: './hotel-list.component.html',
   styleUrl: './hotel-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HotelListComponent implements OnInit {
-  hotelList!: HotelListItem[];
+export class HotelListComponent implements OnInit, OnChanges {
+  hotelList!: PaginatedList<HotelListItem>;
+
+  @Input() initialPageIndex: number = 0;
+  @Output() changePage = new EventEmitter<number>();
 
   constructor(private hotelsService: HotelsService, private change: ChangeDetectorRef) {
-    
+
   }
 
   ngOnInit(): void {
-    this.getHotelList();
+    this.getHotelList(this.initialPageIndex, 9);
   }
 
-  getHotelList() {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getHotelList(0, 9);
+  }
+
+  getHotelList(pageIndex: number, pageSize: number) {
     this.hotelsService
-      .getList()
+      .getList(pageIndex, pageSize)
       .subscribe({
         next: (hotelList) => {
-          console.log(hotelList);
           this.hotelList = hotelList;
           this.change.markForCheck();
         },
@@ -40,7 +48,8 @@ export class HotelListComponent implements OnInit {
       });
   }
 
-  trackByHotelId(index: number, hotel: HotelListItem): number {
-    return hotel.id;
+  onChangePage(requestedPageIndex: number) {
+    this.getHotelList(requestedPageIndex, this.hotelList.pageSize);
+    this.changePage.emit(requestedPageIndex);
   }
 }

@@ -1,3 +1,4 @@
+@if(hotelList){
 <div class="container-xxl py-5">
     <div class="container">
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -5,16 +6,17 @@
             <h1 class="mb-5">Explore Our <span class="text-primary text-uppercase">Rooms</span></h1>
         </div>
         <div class="row g-4">
-            @for (hotel of hotelList; track $index) {
-            <app-hotel-card
-            [hotelName]="hotel.name"
-            [hotelDescription]="hotel.description"
-            [hotelRoomCost]="hotel.roomCost"
-            [hotelStars]="hotel.starRating"
-            >
+            @for (hotel of hotelList.items; track $index) {
+            <app-hotel-card class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" [hotelName]="hotel.name"
+                [hotelDescription]="hotel.description" [hotelRoomCost]="hotel.roomCost" [hotelStars]="hotel.starRating">
             </app-hotel-card>
             }
 
         </div>
-    </div>
+        <div class="mt-4">
+            <app-pagination [pageIndex]="hotelList.pageIndex" [pageSize]="hotelList.pageSize"
+                [totalItems]="hotelList.totalCount" (changePage)="onChangePage($event)"></app-pagination>
+        </div>
+        </div>
 </div>
+}
