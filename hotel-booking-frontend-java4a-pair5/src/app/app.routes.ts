@@ -1,12 +1,11 @@
-import path from 'path';
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { Routes } from '@angular/router';
-import { RegisterComponent } from './pages/register/register.component';
-import { LoginComponent } from './pages/login/login.component';
-import { AboutComponent } from './pages/about/about.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { BookingComponent } from './pages/booking/booking.component';
-import { HotelDetailsComponent } from './pages/hotel-details/hotel-details.component';
+import { RegisterComponent } from './features/register/components/register/register.component'; 
+import { LoginComponent } from './features/login/components/login/login.component';
+import { AboutComponent } from './features/about/components/about/about.component';
+import { HomepageComponent } from './features/homepage/components/homepage/homepage.component';
+import { BookingComponent } from './features/booking/components/booking/booking.component';
+import { HotelDetailsComponent } from './features/hotel-details/components/hotel-details/hotel-details.component';
 
 export const routes: Routes = [
   {
