@@ -1,0 +1,23 @@
+<div class="room-item shadow rounded overflow-hidden">
+    <div class="position-relative">
+        <img class="img-fluid" src="layout-assets/img/room-1.jpg" alt="">
+        <small
+            class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">{{
+            hotelRoomCost }}/Night</small>
+    </div>
+    <div class="p-4 mt-2">
+        <div class="d-flex justify-content-between mb-3">
+            <h5 class="mb-0">{{ hotelName }}</h5>
+            <div class="ps-2">
+                @for (star of [].constructor(hotelStars); track $index) {
+                <small class="fa fa-star text-primary"></small>
+                }
+            </div>
+        </div>
+
+        <p class="text-body mb-2">{{ hotelDescription }}</p>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="">Book Now</a>
+        </div>
+    </div>
+</div>

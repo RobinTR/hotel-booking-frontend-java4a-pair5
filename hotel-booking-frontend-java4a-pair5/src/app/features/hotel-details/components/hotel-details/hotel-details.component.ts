@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ReviewsComponent } from '../../features/hotels/components/reviews/reviews.component';
-import { ArrowUpComponent } from '../../shared/components/arrow-up/arrow-up.component';
+import { ReviewsComponent } from '../../../hotels/components/reviews/reviews.component';
+import { ArrowUpComponent } from '../../../../shared/components/arrow-up/arrow-up.component';
 
 @Component({
   selector: 'app-hotel-details',

@@ -1,7 +1,14 @@
 <div class="container-fluid bg-white p-0">
-<app-navbar></app-navbar>
-<ng-content></ng-content>
+    <header>
+        <app-navbar></app-navbar>
+    </header>
 
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+    <main>
+        <router-outlet></router-outlet>
+    </main>
+
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+
 </div>
