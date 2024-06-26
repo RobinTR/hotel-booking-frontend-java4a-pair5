@@ -1,0 +1,29 @@
+
+
+@keyframes float { /* animation/booking */
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+.custom-navbar-brand { /* booking */
+  padding-left: 0;
+  position: relative;
+  left: -80px;
+}
+
+.custom-nav {  /* home-about-contact... */
+  position: relative;
+  margin-left: 170px;
+}
+
