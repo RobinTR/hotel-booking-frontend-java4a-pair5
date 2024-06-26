@@ -32,12 +32,7 @@ export class HomepageComponent {
 
   searchHotels() {
     this.location=this.locationFormGroup.value.location;
-      if (this.location) {
-        
-       this.hotelService.searchByLocation(this.location).subscribe();
-      } else {
-          console.warn('Location input is empty!');
-      }
+  
   }
 
 }

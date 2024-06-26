@@ -58,6 +58,7 @@ export class HotelListComponent implements OnInit, OnChanges {
       });
   }
   searchHotelsByLocation() {
+    if(this.location){
     this.hotelsService.searchByLocation(this.location)
       .subscribe({
         next: (hotelList) => {
@@ -68,6 +69,8 @@ export class HotelListComponent implements OnInit, OnChanges {
           console.error('There was an error searching hotels by location!', error);
         },
       });
+    }
+    
   }
 
   onChangePage(requestedPageIndex: number) {
