@@ -18,7 +18,8 @@ import { PaginationComponent } from '../../../../shared/components/pagination/pa
 })
 export class HotelListComponent implements OnInit, OnChanges {
   hotelList!: PaginatedList<HotelListItem>;
-
+  @Input() location: string = '';
+  @Input() filterByHotelId: number | null = null;
   @Input() initialPageIndex: number = 0;
   @Output() changePage = new EventEmitter<number>();
 
@@ -27,16 +28,25 @@ export class HotelListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.getHotelList(this.initialPageIndex, 9);
+    if (this.location) {
+      this.searchHotelsByLocation();
+    } else {
+      this.getHotelList(this.initialPageIndex, 9);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes['filterByHotelId'] &&
+      changes['filterByHotelId'].previousValue !==
+        changes['filterByHotelId'].currentValue
+    )
     this.getHotelList(0, 9);
   }
 
   getHotelList(pageIndex: number, pageSize: number) {
     this.hotelsService
-      .getList(pageIndex, pageSize)
+      .getList(pageIndex, pageSize,this.filterByHotelId)
       .subscribe({
         next: (hotelList) => {
           this.hotelList = hotelList;
@@ -46,6 +56,21 @@ export class HotelListComponent implements OnInit, OnChanges {
           console.error('There was an error!', error);
         },
       });
+  }
+  searchHotelsByLocation() {
+    if(this.location){
+    this.hotelsService.searchByLocation(this.location)
+      .subscribe({
+        next: (hotelList) => {
+          this.hotelList = hotelList;
+          this.change.markForCheck();
+        },
+        error: (error) => {
+          console.error('There was an error searching hotels by location!', error);
+        },
+      });
+    }
+    
   }
 
   onChangePage(requestedPageIndex: number) {
