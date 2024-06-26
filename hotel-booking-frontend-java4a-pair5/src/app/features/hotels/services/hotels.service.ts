@@ -5,7 +5,6 @@ import { HotelListItem } from "../models/hotel-list-item";
 import { Observable, map } from "rxjs";
 import { Injectable } from "@angular/core";
 import { PaginatedList } from "../../../core/models/paginated-list";
-import { log } from "console";
 
 @Injectable({
     providedIn: 'root'
@@ -22,13 +21,8 @@ export class HotelsService {
 
     getList(
         pageIndex: number,
-        pageSize: number,
-        filterByHotelId: number | null): Observable<PaginatedList<HotelListItem>> {
-            let queryParams: any = {};
-            if (filterByHotelId) {
-              queryParams.hotelId = filterByHotelId.toString();
-            }
-        return this._http.get<{ success: boolean; message: string; data: HotelListItem[] }>(this.apiControllerUrl,  { params: queryParams })
+        pageSize: number): Observable<PaginatedList<HotelListItem>> {
+        return this._http.get<{ success: boolean; message: string; data: HotelListItem[] }>(this.apiControllerUrl)
             .pipe(
                 map((response) => {
                     const paginatedList: PaginatedList<HotelListItem> = {
@@ -43,23 +37,4 @@ export class HotelsService {
                     return paginatedList;
                 }));
     }
-
-  searchByLocation(location: string): Observable<PaginatedList<HotelListItem>> {
-    const queryParams = { location }; // Assuming your backend expects 'location' as a query parameter
-
-    return this._http.get<{ success: boolean; message: string; data: HotelListItem[] }>(`${this.apiControllerUrl}/searchByLocation`, { params: queryParams })
-      .pipe(
-        map((response) => {
-          const paginatedList: PaginatedList<HotelListItem> = {
-            items: response.data,
-            pageIndex: 0, // Adjust as needed
-            pageSize: response.data.length, // Adjust as needed
-            totalCount: response.data.length,
-          };
-          console.log(response);
-          
-          return paginatedList;
-        })
-      );
-  }
 }
