@@ -1,5 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Hotel } from '../../models/hotel';
+import { Router } from '@angular/router';
+import { HotelsService } from '../../services/hotels.service';
 
 @Component({
   selector: 'app-hotel-card',
@@ -11,8 +14,17 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 })
 export class HotelCardComponent {
-  @Input() hotelRoomCost?: number;
   @Input() hotelName?: String;
   @Input() hotelDescription?: String;
   @Input() hotelStars?: number;
+  @Input() hotelData!: Hotel;
+
+  constructor(private hotelsService: HotelsService, private router: Router) {
+
+  }
+
+  bookNow() {
+    this.hotelsService.setSelectedHotel(this.hotelData);
+    this.router.navigate(['/hoteldetails']);
+  }
 }

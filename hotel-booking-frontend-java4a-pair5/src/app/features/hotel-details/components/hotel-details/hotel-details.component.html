@@ -1,9 +1,12 @@
 <div class="bg-light container-xxl p-5">
-<div id="carouselExampleIndicators" class="carousel slide container small-carousel">
+  <div id="carouselExampleIndicators" class="carousel slide container small-carousel">
     <div class="carousel-indicators">
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
@@ -16,185 +19,160 @@
         <img src="layout-assets/img/room-3.jpg" class="d-block w-100" alt="...">
       </div>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
   </div>
 
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
-  <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  @if (selectedHotel?.hotelFeatures?.length) {
+  @for (hotelFeature of selectedHotel?.hotelFeatures; track $index) {
+  <app-hotel-feature [hotelFeature]="hotelFeature"></app-hotel-feature>
+  }
+  }
+
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
+  <button type="button"
+    class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-3">Warning</button>
 
   <div class="about_info">
     <div class="section_title mb-20px">
-        <h3>Hotel </h3>
+      <h3>{{ selectedHotel?.name }}</h3>
     </div>
-    <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare dapibus enim ut tincidunt rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et. Rhoncus.</p>
-</div>
+    <p>{{ selectedHotel?.description }}</p>
+  </div>
 
-<div class="container-fluid pb-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container-fluid pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <div class="bg-white shadow" style="padding: 35px;">
+      <div class="bg-white shadow" style="padding: 35px;">
+        <div class="row g-2">
+          <div class="col-md-10">
             <div class="row g-2">
-                <div class="col-md-10">
-                    <div class="row g-2">
-                        <div class="col-md-3">
-                            <div class="date" id="date1" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input"
-                                    placeholder="Check in" data-target="#date1" data-toggle="datetimepicker" />
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="date" id="date2" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" placeholder="Check out" data-target="#date2" data-toggle="datetimepicker"/>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select">
-                                <option selected>Adult</option>
-                                <option value="1">Adult 1</option>
-                                <option value="2">Adult 2</option>
-                                <option value="3">Adult 3</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select">
-                                <option selected>Child</option>
-                                <option value="1">Child 1</option>
-                                <option value="2">Child 2</option>
-                                <option value="3">Child 3</option>
-                            </select>
-                        </div>
-                    </div>
+              <div class="col-md-3">
+                <div class="date" id="date1" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" placeholder="Check in"
+                    data-target="#date1" data-toggle="datetimepicker" />
                 </div>
-                <div class="col-md-2">
-                    <button class="btn btn-primary w-100">Submit</button>
+              </div>
+              <div class="col-md-3">
+                <div class="date" id="date2" data-target-input="nearest">
+                  <input type="text" class="form-control datetimepicker-input" placeholder="Check out"
+                    data-target="#date2" data-toggle="datetimepicker" />
                 </div>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select">
+                  <option selected>Adult</option>
+                  <option value="1">Adult 1</option>
+                  <option value="2">Adult 2</option>
+                  <option value="3">Adult 3</option>
+                </select>
+              </div>
+              <div class="col-md-3">
+                <select class="form-select">
+                  <option selected>Child</option>
+                  <option value="1">Child 1</option>
+                  <option value="2">Child 2</option>
+                  <option value="3">Child 3</option>
+                </select>
+              </div>
             </div>
+          </div>
+          <div class="col-md-2">
+            <button class="btn btn-primary w-100">Submit</button>
+          </div>
         </div>
+      </div>
     </div>
   </div>
-  
+
   <div class="container mt-5">
     <h2 class="mb-4">Müsait Odalar</h2>
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th class="text-white bg-dark">Oda Türü</th>
-                <th class="text-white bg-dark">Yetişkin Sayısı</th>
-                <th class="text-white bg-dark">Çocuk Sayısı</th>
-                <th class="text-white bg-dark">Fiyat</th>
-                <th class="text-white bg-dark"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">İki Yataklı Oda</a>
-                    <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nulla assumenda hic nesciunt qui quisquam accusamus aspernatur dolore id cupiditate perferendis ad animi? Praesentium et vitae hic. Ab, libero unde?
-                <br>   
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+      <thead>
+        <tr>
+          <th class="text-white bg-dark">Oda Türü</th>
+          <th class="text-white bg-dark">Kişi Sayısı</th>
+          <th class="text-white bg-dark">Fiyat</th>
+          <th class="text-white bg-dark"></th>
+        </tr>
+      </thead>
+      <tbody>
 
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+        @for (room of selectedHotel?.rooms; track $index) {
+        <tr>
+          <td>
+            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">{{ room.roomType.name }}</a>
+            <p>{{ room.roomType.description }}</p>
 
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
 
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
 
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
 
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
 
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
 
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
 
-            </td>
-                <td>2</td>
-                <td>0</td>
-                <td>9700 TL</td>
-                <td><a href="">Rezervasyon Yap</a></td>
-            </tr>
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+
+            <button type="button"
+              class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
+
+          </td>
+          <td>2</td>
+          <td>9700 TL</td>
+          <td><a href="">Rezervasyon Yap</a></td>
+        </tr>
+        }
 
 
-            <tr>
-                <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">İki Yataklı Oda</a>
-                    <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nulla assumenda hic nesciunt qui quisquam accusamus aspernatur dolore id cupiditate perferendis ad animi? Praesentium et vitae hic. Ab, libero unde?
-                <br>   
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-            </td>
-                <td>2</td>
-                <td>0</td>
-                <td>9700 TL</td>
-                <td><a href="">Rezervasyon Yap</a></td>
-            </tr>
-
-            <tr>
-                <td><a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">İki Yataklı Oda</a>
-                    <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nulla assumenda hic nesciunt qui quisquam accusamus aspernatur dolore id cupiditate perferendis ad animi? Praesentium et vitae hic. Ab, libero unde?
-                <br>   
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-                <button type="button" class="btn-sm btn-outline-warning bg-dark rounded-4 disabled button-deactive my-2 mx-1">Warning</button>
-
-            </td>
-                <td>2</td>
-                <td>0</td>
-                <td>9700 TL</td>
-                <td><a href="">Rezervasyon Yap</a></td>
-            </tr>
-        </tbody>
+      </tbody>
     </table>
-</div>
+  </div>
 
-<app-reviews></app-reviews>
+  <app-reviews></app-reviews>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -205,7 +183,41 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum modi magnam voluptatibus optio? Quos, ullam aperiam laudantium iste minima neque minus quaerat id autem voluptates optio, culpa alias doloribus, rem nesciunt voluptatem a rerum. Quaerat, quis nobis? Qui minus maxime autem sunt aut voluptatibus placeat incidunt necessitatibus dicta modi debitis ex, itaque quos, illum officia, cum eaque fuga doloribus dolores porro repudiandae voluptatem maiores! Quaerat, quos ab optio tempore voluptatum minus distinctio consectetur, repudiandae iste eos cumque soluta laboriosam magnam aliquid officiis iure id dolore? Eos iusto ducimus non doloribus dolore numquam, nulla facilis eaque! Asperiores velit libero nemo, dignissimos totam tempora. Vitae voluptatem explicabo temporibus eum quasi. Eaque, magnam nisi modi consequatur deleniti rerum beatae qui aperiam natus laborum consectetur? Sed, omnis odio corporis eligendi laborum quod officia obcaecati rerum, hic eum nisi quibusdam? Cumque labore illum minima aliquam officia animi vero itaque corrupti modi. Dolore, pariatur minima veniam quia quidem ea quae aspernatur consequatur reprehenderit repudiandae in ipsa sunt accusamus officia nemo recusandae, placeat quaerat! Cumque explicabo cupiditate, ullam a unde eveniet repudiandae fugiat nobis assumenda laborum eos, porro minus vel aliquam error odio odit eius corporis, ducimus ipsum aliquid tempora sunt quasi debitis? Assumenda, cupiditate. Mollitia cum repellat ratione sapiente numquam, iusto sequi quod! Est saepe eaque fugiat corporis recusandae dolorem necessitatibus soluta neque eum aliquid amet, magnam facere error quo similique labore sit dolorum ipsam nam at alias! Dolorem maxime architecto praesentium, cumque debitis illum dolore eveniet ex necessitatibus eligendi, fuga corrupti atque qui labore deserunt corporis, exercitationem eum. Accusantium dolore, provident quis, expedita placeat similique fugit velit vitae corrupti a dolorem laborum neque enim repellat ad! Suscipit quidem, accusamus facere beatae doloremque, quibusdam quis ratione dolor atque aspernatur eius vitae. Facilis mollitia alias vero non voluptatibus nulla ipsam laborum recusandae in placeat tempore, nesciunt delectus nostrum animi sit incidunt dignissimos, tenetur itaque id velit cum. Cum laudantium maxime nostrum consequatur ab vero quas ea eum omnis eligendi facilis exercitationem iure natus, pariatur eius nihil dicta blanditiis illum ratione qui quibusdam libero consequuntur facere. Eligendi labore totam dicta commodi odit laborum nemo sunt ullam magni quasi. Quos atque similique necessitatibus at sed rerum animi. Commodi quam fugit optio modi voluptatem odit, eligendi ab explicabo dolorem maiores deleniti voluptate enim quas beatae quod dicta tenetur reiciendis perspiciatis eaque vitae minima distinctio cupiditate repudiandae aut? Rem provident odit, aspernatur excepturi aliquam magnam distinctio ipsum repudiandae asperiores sed sit omnis hic vero fuga expedita perferendis atque unde neque facere. Praesentium soluta officia sunt sed esse autem ratione animi, illo cum deserunt repellat sequi nesciunt repellendus. Accusantium non ab ad saepe soluta. Neque saepe commodi unde doloribus vero iusto nihil voluptatum rerum ad nemo delectus molestiae deleniti, asperiores, ea minima vitae quo provident magnam maiores aliquam at corporis! Earum, repellat? Accusamus ipsum nesciunt laborum accusantium, odit, necessitatibus dolorem corporis vero magni voluptas perferendis sit animi. Ipsa suscipit voluptatem impedit nulla amet minus eveniet, repudiandae in cum maxime veritatis praesentium. Repellat velit explicabo excepturi cumque ab earum molestiae at eos unde.
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum modi magnam voluptatibus optio? Quos, ullam
+          aperiam laudantium iste minima neque minus quaerat id autem voluptates optio, culpa alias doloribus, rem
+          nesciunt voluptatem a rerum. Quaerat, quis nobis? Qui minus maxime autem sunt aut voluptatibus placeat
+          incidunt necessitatibus dicta modi debitis ex, itaque quos, illum officia, cum eaque fuga doloribus dolores
+          porro repudiandae voluptatem maiores! Quaerat, quos ab optio tempore voluptatum minus distinctio consectetur,
+          repudiandae iste eos cumque soluta laboriosam magnam aliquid officiis iure id dolore? Eos iusto ducimus non
+          doloribus dolore numquam, nulla facilis eaque! Asperiores velit libero nemo, dignissimos totam tempora. Vitae
+          voluptatem explicabo temporibus eum quasi. Eaque, magnam nisi modi consequatur deleniti rerum beatae qui
+          aperiam natus laborum consectetur? Sed, omnis odio corporis eligendi laborum quod officia obcaecati rerum, hic
+          eum nisi quibusdam? Cumque labore illum minima aliquam officia animi vero itaque corrupti modi. Dolore,
+          pariatur minima veniam quia quidem ea quae aspernatur consequatur reprehenderit repudiandae in ipsa sunt
+          accusamus officia nemo recusandae, placeat quaerat! Cumque explicabo cupiditate, ullam a unde eveniet
+          repudiandae fugiat nobis assumenda laborum eos, porro minus vel aliquam error odio odit eius corporis, ducimus
+          ipsum aliquid tempora sunt quasi debitis? Assumenda, cupiditate. Mollitia cum repellat ratione sapiente
+          numquam, iusto sequi quod! Est saepe eaque fugiat corporis recusandae dolorem necessitatibus soluta neque eum
+          aliquid amet, magnam facere error quo similique labore sit dolorum ipsam nam at alias! Dolorem maxime
+          architecto praesentium, cumque debitis illum dolore eveniet ex necessitatibus eligendi, fuga corrupti atque
+          qui labore deserunt corporis, exercitationem eum. Accusantium dolore, provident quis, expedita placeat
+          similique fugit velit vitae corrupti a dolorem laborum neque enim repellat ad! Suscipit quidem, accusamus
+          facere beatae doloremque, quibusdam quis ratione dolor atque aspernatur eius vitae. Facilis mollitia alias
+          vero non voluptatibus nulla ipsam laborum recusandae in placeat tempore, nesciunt delectus nostrum animi sit
+          incidunt dignissimos, tenetur itaque id velit cum. Cum laudantium maxime nostrum consequatur ab vero quas ea
+          eum omnis eligendi facilis exercitationem iure natus, pariatur eius nihil dicta blanditiis illum ratione qui
+          quibusdam libero consequuntur facere. Eligendi labore totam dicta commodi odit laborum nemo sunt ullam magni
+          quasi. Quos atque similique necessitatibus at sed rerum animi. Commodi quam fugit optio modi voluptatem odit,
+          eligendi ab explicabo dolorem maiores deleniti voluptate enim quas beatae quod dicta tenetur reiciendis
+          perspiciatis eaque vitae minima distinctio cupiditate repudiandae aut? Rem provident odit, aspernatur
+          excepturi aliquam magnam distinctio ipsum repudiandae asperiores sed sit omnis hic vero fuga expedita
+          perferendis atque unde neque facere. Praesentium soluta officia sunt sed esse autem ratione animi, illo cum
+          deserunt repellat sequi nesciunt repellendus. Accusantium non ab ad saepe soluta. Neque saepe commodi unde
+          doloribus vero iusto nihil voluptatum rerum ad nemo delectus molestiae deleniti, asperiores, ea minima vitae
+          quo provident magnam maiores aliquam at corporis! Earum, repellat? Accusamus ipsum nesciunt laborum
+          accusantium, odit, necessitatibus dolorem corporis vero magni voluptas perferendis sit animi. Ipsa suscipit
+          voluptatem impedit nulla amet minus eveniet, repudiandae in cum maxime veritatis praesentium. Repellat velit
+          explicabo excepturi cumque ab earum molestiae at eos unde.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

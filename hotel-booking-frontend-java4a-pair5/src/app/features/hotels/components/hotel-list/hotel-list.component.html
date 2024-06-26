@@ -8,7 +8,7 @@
         <div class="row g-4">
             @for (hotel of hotelList.items; track $index) {
             <app-hotel-card class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" [hotelName]="hotel.name"
-                [hotelDescription]="hotel.description" [hotelRoomCost]="hotel.roomCost" [hotelStars]="hotel.starRating">
+                [hotelDescription]="hotel.description" [hotelStars]="hotel.starRating" [hotelData]="hotel">
             </app-hotel-card>
             }
 
