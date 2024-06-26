@@ -40,44 +40,46 @@
 
 <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <div class="bg-white shadow" style="padding: 35px;">  
-            <form [formGroup]="locationFormGroup" >
-            <div class="row g-2"> 
-              
-                <div class="col-md-10">
-                    <div class="row g-2">
-                       
-                        <div class="col-md-3">
-                            <div class="location" id="location" data-target-input="nearest">
-                                <input type="text" id="locationInput" formControlName="location" class="form-control " placeholder="Location" />
+        <div class="bg-white shadow" style="padding: 35px;">
+            <form [formGroup]="locationFormGroup">
+                <div class="row g-2">
+
+                    <div class="col-md-10">
+                        <div class="row g-2">
+
+                            <div class="col-md-3">
+                                <div class="location" id="location" data-target-input="nearest">
+                                    <input type="text" id="locationInput" formControlName="location"
+                                        class="form-control " placeholder="Location" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="date" id="date1" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" placeholder="Check in"
-                                    data-target="#date1" data-toggle="datetimepicker" />
+                            <div class="col-md-3">
+                                <div class="date" id="date1" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" placeholder="Check in"
+                                        data-target="#date1" data-toggle="datetimepicker" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="date" id="date2" data-target-input="nearest">
-                                <input type="text" class="form-control datetimepicker-input" placeholder="Check out"
-                                    data-target="#date2" data-toggle="datetimepicker" />
+                            <div class="col-md-3">
+                                <div class="date" id="date2" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" placeholder="Check out"
+                                        data-target="#date2" data-toggle="datetimepicker" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <select class="form-select">
-                                <option selected>Person</option>
-                                <option value="1">Person 1</option>
-                                <option value="2">Person 2</option>
-                                <option value="3">Person 3</option>
-                            </select>
+                            <div class="col-md-3">
+                                <select class="form-select">
+                                    <option selected>Person</option>
+                                    <option value="1">Person 1</option>
+                                    <option value="2">Person 2</option>
+                                    <option value="3">Person 3</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-outline-warning w-100" (click)="searchHotels()">Submit</button>
+                    </div>
                 </div>
-                <div class="col-md-2">
-                    <button class="btn btn-outline-warning w-100" (click)="searchHotels()">Submit</button>
-                </div>
-            </div></form>
+            </form>
         </div>
     </div>
 </div>

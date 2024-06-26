@@ -1,65 +1,73 @@
-import { env } from "process";
 import { environment } from "../../../../environments/environment.development";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { HotelListItem } from "../models/hotel-list-item";
 import { Observable, map } from "rxjs";
 import { Injectable } from "@angular/core";
 import { PaginatedList } from "../../../core/models/paginated-list";
-import { log } from "console";
+import { Hotel } from "../models/hotel";
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class HotelsService {
-    private apiControllerUrl = `${environment.apiUrl}/api/hotels`;
-    
+  private apiControllerUrl = `${environment.apiUrl}/api/hotels`;
+  private selectedHotel: Hotel | null = null;
 
-    constructor(
-        private _http: HttpClient
-    ) {
+  constructor(
+    private _http: HttpClient
+  ) {
 
+  }
+
+  getList(
+    pageIndex: number,
+    pageSize: number,
+    filterByHotelId: number | null): Observable<PaginatedList<Hotel>> {
+    let queryParams: any = {};
+    if (filterByHotelId) {
+      queryParams.hotelId = filterByHotelId.toString();
     }
-
-    getList(
-        pageIndex: number,
-        pageSize: number,
-        filterByHotelId: number | null): Observable<PaginatedList<HotelListItem>> {
-            let queryParams: any = {};
-            if (filterByHotelId) {
-              queryParams.hotelId = filterByHotelId.toString();
-            }
-        return this._http.get<{ success: boolean; message: string; data: HotelListItem[] }>(this.apiControllerUrl,  { params: queryParams })
-            .pipe(
-                map((response) => {
-                    const paginatedList: PaginatedList<HotelListItem> = {
-                        items: response.data.slice(
-                            pageIndex * pageSize,
-                            pageIndex * pageSize + pageSize
-                        ),
-                        pageIndex,
-                        pageSize,
-                        totalCount: response.data.length,
-                    };
-                    return paginatedList;
-                }));
-    }
-
-  searchByLocation(location: string): Observable<PaginatedList<HotelListItem>> {
-    const queryParams = { location }; // Assuming your backend expects 'location' as a query parameter
-
-    return this._http.get<{ success: boolean; message: string; data: HotelListItem[] }>(`${this.apiControllerUrl}/searchByLocation`, { params: queryParams })
+    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(this.apiControllerUrl, { params: queryParams })
       .pipe(
         map((response) => {
-          const paginatedList: PaginatedList<HotelListItem> = {
+          const paginatedList: PaginatedList<Hotel> = {
+            items: response.data.slice(
+              pageIndex * pageSize,
+              pageIndex * pageSize + pageSize
+            ),
+            pageIndex,
+            pageSize,
+            totalCount: response.data.length,
+          };
+          return paginatedList;
+        }));
+  }
+
+  searchByLocation(location: string): Observable<PaginatedList<Hotel>> {
+    const queryParams = { location };
+
+    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByLocation`, { params: queryParams })
+      .pipe(
+        map((response) => {
+          const paginatedList: PaginatedList<Hotel> = {
             items: response.data,
-            pageIndex: 0, // Adjust as needed
-            pageSize: response.data.length, // Adjust as needed
+            pageIndex: 0,
+            pageSize: response.data.length,
             totalCount: response.data.length,
           };
           console.log(response);
-          
+
           return paginatedList;
         })
       );
   }
+
+  setSelectedHotel(hotel: Hotel) {
+    this.selectedHotel = hotel;
+  }
+
+  getSelectedHotel(): Hotel | null {
+    return this.selectedHotel;
+  }
+
 }
