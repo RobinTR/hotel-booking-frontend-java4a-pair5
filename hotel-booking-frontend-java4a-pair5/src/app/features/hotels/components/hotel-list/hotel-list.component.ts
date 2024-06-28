@@ -5,6 +5,7 @@ import { PaginatedList } from '../../../../core/models/paginated-list';
 import { HotelCardComponent } from '../hotel-card/hotel-card.component';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 import { Hotel } from '../../models/hotel';
+import { log } from 'console';
 
 @Component({
   selector: 'app-hotel-list',
@@ -17,6 +18,9 @@ import { Hotel } from '../../models/hotel';
 export class HotelListComponent implements OnInit, OnChanges {
   hotelList!: PaginatedList<Hotel>;
   @Input() location: string = '';
+  @Input() startDate!: string;
+  @Input() endDate!:string;
+  @Input() person!:number;
   @Input() filterByHotelId: number | null = null;
   @Input() initialPageIndex: number = 0;
   @Output() changePage = new EventEmitter<number>();
@@ -26,9 +30,18 @@ export class HotelListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    if (this.location) {
-      this.searchHotelsByLocation();
-    } else {
+    if (this.location ) {
+      this.searchHotelsByLocation()
+      
+    }else if(this.startDate && this.endDate){
+      console.log(this.startDate,this.endDate);
+      
+       this.searchHotelsByDate();
+    } 
+    else if(this.person){
+      this.searchHotelsByPerson();
+   } 
+    else {
       this.getHotelList(this.initialPageIndex, 9);
     }
   }
@@ -39,9 +52,18 @@ export class HotelListComponent implements OnInit, OnChanges {
       changes['filterByHotelId'].previousValue !==
       changes['filterByHotelId'].currentValue
     )*/
-    if (this.location) {
+    if (this.location ) {
+    
       this.searchHotelsByLocation();
-    } else {
+
+  
+    }else if ( this.startDate && this.endDate) {
+      console.log(this.startDate,this.endDate);
+      this.searchHotelsByDate();
+      
+  
+    }
+     else {
       this.getHotelList(0, 9);
     }
   }
@@ -61,12 +83,47 @@ export class HotelListComponent implements OnInit, OnChanges {
   }
 
   searchHotelsByLocation() {
-    if (this.location) {
-      this.hotelsService.searchByLocation(this.location)
+    if (this.location ) {
+      this.hotelsService.searchByLocation(this.location) 
         .subscribe({
           next: (hotelList) => {
             this.hotelList = hotelList;
             this.change.markForCheck();
+        
+          },
+          error: (error) => {
+            console.error('There was an error searching hotels by location!', error);
+          },
+        });
+    }
+  }
+
+  searchHotelsByDate() {
+    if ( this.startDate && this.endDate) {
+      console.log(this.startDate,this.endDate);
+      
+      this.hotelsService.searchByDate(this.startDate,this.endDate)
+        .subscribe({
+          next: (hotelList) => {
+            this.hotelList = hotelList;  
+            this.change.markForCheck();
+        
+          },
+          error: (error) => {
+            console.error('There was an error searching hotels by !', error);
+          },
+        });
+    }
+  }
+  searchHotelsByPerson() {
+    if ( this.person) {
+      this.hotelsService.searchByPerson(this.person)
+        .subscribe({
+          next: (hotelList) => {
+            
+            this.hotelList = hotelList;
+            this.change.markForCheck();
+        
           },
           error: (error) => {
             console.error('There was an error searching hotels by location!', error);

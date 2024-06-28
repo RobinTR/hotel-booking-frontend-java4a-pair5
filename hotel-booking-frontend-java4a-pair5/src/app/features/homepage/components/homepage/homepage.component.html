@@ -41,7 +41,7 @@
 <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
         <div class="bg-white shadow" style="padding: 35px;">
-            <form [formGroup]="locationFormGroup">
+            <form [formGroup]="searchFormGroup">
                 <div class="row g-2">
 
                     <div class="col-md-10">
@@ -50,46 +50,50 @@
                             <div class="col-md-3">
                                 <div class="location" id="location" data-target-input="nearest">
                                     <input type="text" id="locationInput" formControlName="location"
-                                        class="form-control " placeholder="Location" />
+                                        class="form-control  " placeholder="Location" />
+
                                 </div>
                             </div>
+                            <mat-form-field class="custom-form-field col-md-3">
+                                <mat-label>Check in date</mat-label>
+                                <input matInput [matDatepicker]="startDate" (dateChange)="onStartDateSelected($event)">
+
+                                <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+                                <mat-datepicker #startDate></mat-datepicker>
+                            </mat-form-field>
 
                             <mat-form-field class="custom-form-field col-md-3">
-                                <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker" (dateChange)="onDateSelected($event)">
-                                
-                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-                              </mat-form-field>
-
-                              <mat-form-field class="custom-form-field col-md-3">
-                                <mat-label>Choose a date</mat-label>
-                                <input matInput [matDatepicker]="picker2">
-                                
-                                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-                                <mat-datepicker #picker2></mat-datepicker>
-                              </mat-form-field>
-                            
-                            
+                                <mat-label>Check out date</mat-label>
+                                <input matInput [matDatepicker]="endDate" (dateChange)="onEndDateSelected($event)">
+                                <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+                                <mat-datepicker #endDate></mat-datepicker>
+                            </mat-form-field>
                             <div class="col-md-3">
-                                <select class="form-select">
-                                    <option selected>Person</option>
-                                    <option value="1">Person 1</option>
-                                    <option value="2">Person 2</option>
-                                    <option value="3">Person 3</option>
-                                </select>
+                                <div class="person" id="person" data-target-input="nearest">
+                                    <input type="text" id="personInput" formControlName="person" class="form-control  "
+                                        placeholder="Person" />
+
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-outline-warning w-100" (click)="searchHotels()">Submit</button>
+                        <button class="btn btn-outline-warning w-100 h-95"
+                            (click)="searchHotels();searchByPerson()">Submit</button>
                     </div>
                 </div>
             </form>
+
         </div>
+
     </div>
+
 </div>
 
-<app-hotel-list [location]="location"></app-hotel-list>
+<app-filters></app-filters>
+
+<app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!"></app-hotel-list>
+
+
 
 <app-arrow-up></app-arrow-up>
