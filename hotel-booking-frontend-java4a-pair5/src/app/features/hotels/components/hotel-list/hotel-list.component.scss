@@ -1,0 +1,14 @@
+/* Öneri kutusu stilleri */
+#locationOptions {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+  
+  /* Giriş alanı genişliği */
+  #locationInput {
+    width: 100%;
+  }
