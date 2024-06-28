@@ -1,0 +1,27 @@
+.custom-form-field {
+    font-size: 1.2em; /* Adjust font size */
+    color: #123456;  /* Adjust text color */
+    width: 15rem;     /* Adjust width */
+    height: 4rem;
+    background-color: #fff;
+  
+    .mat-form-field-wrapper {
+      padding-bottom: 0.75em; /* Adjust padding */
+    }
+  
+    .mat-form-field-flex {
+      border-bottom: 2px solid #123456; /* Adjust border color */
+    }
+  
+    .mat-form-field-label {
+      color: #123456; /* Adjust label color */
+    }
+  
+    .mat-hint {
+      color: #654321; /* Adjust hint color */
+    }
+  }
+
+  #locationInput {
+    height: 3rem;
+  }

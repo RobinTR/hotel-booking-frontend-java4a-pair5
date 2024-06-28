@@ -1,11 +1,11 @@
+import { RoomTypeFeature } from "./room-type-feature";
+
+
 export interface RoomType {
     id: number;
     name: String;
     description: String;
     capacity: number;
-    smokeFriendly: boolean;
-    petFriendly: boolean;
-    wifi: boolean;
-    food: boolean;
-    isAllInclusive: boolean;
+    features: RoomTypeFeature[];
+    allInclusive: boolean;
 }
