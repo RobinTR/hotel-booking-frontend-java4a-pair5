@@ -1,6 +1,5 @@
 import { environment } from "../../../../environments/environment.development";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { HotelListItem } from "../models/hotel-list-item";
 import { Observable, map } from "rxjs";
 import { Injectable } from "@angular/core";
 import { PaginatedList } from "../../../core/models/paginated-list";
@@ -10,6 +9,7 @@ import { Hotel } from "../models/hotel";
   providedIn: 'root'
 })
 export class HotelsService {
+  
   private apiControllerUrl = `${environment.apiUrl}/api/hotels`;
   private selectedHotel: Hotel | null = null;
 
@@ -47,6 +47,44 @@ export class HotelsService {
     const queryParams = { location };
 
     return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByLocation`, { params: queryParams })
+      .pipe(
+        map((response) => {
+          const paginatedList: PaginatedList<Hotel> = {
+            items: response.data,
+            pageIndex: 0,
+            pageSize: response.data.length,
+            totalCount: response.data.length,
+          };
+          console.log(response);
+
+          return paginatedList;
+        })
+      );
+  }
+  searchByDate(startDate: string,endDate:string): Observable<PaginatedList<Hotel>> {
+    const queryParams = { startDate,endDate };
+ 
+  
+    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByDate`, { params : queryParams })
+      .pipe(
+        map((response) => {
+          const paginatedList: PaginatedList<Hotel> = {
+            items: response.data,
+            pageIndex: 0,
+            pageSize: response.data.length,
+            totalCount: response.data.length,
+          };
+          console.log(response);
+
+          return paginatedList;
+        })
+      );
+  }
+
+  searchByPerson(person: number) : Observable<PaginatedList<Hotel>> {
+    const queryParams = { person };
+  
+    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByRoomCapacityHotels`, { params: queryParams })
       .pipe(
         map((response) => {
           const paginatedList: PaginatedList<Hotel> = {
