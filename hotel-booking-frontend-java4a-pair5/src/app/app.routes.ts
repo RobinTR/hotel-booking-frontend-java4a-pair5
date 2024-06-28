@@ -24,11 +24,13 @@ export const routes: Routes = [
       },
       {
         path: "booking",
-        component: BookingComponent
+        //component: BookingComponent
+        loadComponent: () => import('./features/booking/components/booking/booking.component').then(b => b.BookingComponent)
       },
       {
         path: "hoteldetails",
-        component: HotelDetailsComponent
+        //component: HotelDetailsComponent,
+        loadComponent: () => import('./features/hotel-details/components/hotel-details/hotel-details.component').then(hd => hd.HotelDetailsComponent)
       },
       {
         path: "privacypolicy",

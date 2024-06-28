@@ -48,51 +48,51 @@
                         <div class="row g-2">
 
                             <div class="col-md-3">
-                                <div  class="location" id="location" data-target-input="nearest">
+                                <div class="location" id="location" data-target-input="nearest">
                                     <input type="text" id="locationInput" formControlName="location"
                                         class="form-control  " placeholder="Location" />
-                                       
+
                                 </div>
                             </div>
                             <mat-form-field class="custom-form-field col-md-3">
                                 <mat-label>Check in date</mat-label>
                                 <input matInput [matDatepicker]="startDate" (dateChange)="onStartDateSelected($event)">
-                                
+
                                 <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
                                 <mat-datepicker #startDate></mat-datepicker>
-                              </mat-form-field>
+                            </mat-form-field>
 
-                              <mat-form-field class="custom-form-field col-md-3">
+                            <mat-form-field class="custom-form-field col-md-3">
                                 <mat-label>Check out date</mat-label>
                                 <input matInput [matDatepicker]="endDate" (dateChange)="onEndDateSelected($event)">
-                                
                                 <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
                                 <mat-datepicker #endDate></mat-datepicker>
-                              </mat-form-field>
+                            </mat-form-field>
                             <div class="col-md-3">
-                                <div  class="person" id="person" data-target-input="nearest">
-                                    <input type="text" id="personInput" formControlName="person"
-                                        class="form-control  " placeholder="Person" />
-                                       
+                                <div class="person" id="person" data-target-input="nearest">
+                                    <input type="text" id="personInput" formControlName="person" class="form-control  "
+                                        placeholder="Person" />
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-outline-warning w-100 h-95" (click)="searchHotels();searchByPerson()">Submit</button>
+                        <button class="btn btn-outline-warning w-100 h-95"
+                            (click)="searchHotels();searchByPerson()">Submit</button>
                     </div>
                 </div>
             </form>
-            
+
         </div>
-        
+
     </div>
 
 </div>
 
 <app-filters></app-filters>
 
-<app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!" ></app-hotel-list>
+<app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!"></app-hotel-list>
 
 
 

@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { FiltersComponent } from '../filters/filters.component';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerControl, MatDatepickerInputEvent, MatDatepickerModule, MatDatepickerPanel } from '@angular/material/datepicker';
+import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -17,8 +17,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  providers:[ provideNativeDateAdapter(),DatePipe],
-  imports: [LayoutComponent, CommonModule, RouterModule, HotelListComponent, ArrowUpComponent, PaginationComponent, FormsModule, ReactiveFormsModule,FiltersComponent,MatInputModule,
+  providers: [provideNativeDateAdapter(), DatePipe],
+  imports: [LayoutComponent, CommonModule, RouterModule, HotelListComponent, ArrowUpComponent, PaginationComponent, FormsModule, ReactiveFormsModule, FiltersComponent, MatInputModule,
     MatDatepickerModule,
     MatFormFieldModule,
     MatIconModule,
@@ -28,19 +28,18 @@ import { MatNativeDateModule } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomepageComponent {
-
   location!: string;
-  person!:number;
+  person!: number;
 
   selectedStartDate: string | null = null;
   selectedEndDate: string | null = null;
   searchFormGroup!: FormGroup;
-  constructor(formBuilder: FormBuilder,private datePipe:DatePipe) {
+  constructor(formBuilder: FormBuilder, private datePipe: DatePipe) {
     this.searchFormGroup = formBuilder.group({
       location: [''],
-      startDate:[''],
-      endDate:[''],
-      person:['']
+      startDate: [''],
+      endDate: [''],
+      person: ['']
     });
   }
 
@@ -48,23 +47,17 @@ export class HomepageComponent {
     this.location = this.searchFormGroup.value.location;
   }
 
- 
-    searchByPerson(){
-      this.person = this.searchFormGroup.value.person;
+  searchByPerson() {
+    this.person = this.searchFormGroup.value.person;
+  }
 
-    }
-    
+  onStartDateSelected(event: MatDatepickerInputEvent<Date>) {
+    this.selectedStartDate = this.datePipe.transform(event.value, 'yyyy-MM-dd') || '';
+    console.log('Selected date:', this.selectedStartDate);
+  }
 
-    // Method to handle date selection
-    onStartDateSelected(event: MatDatepickerInputEvent<Date>) {
-      this.selectedStartDate = this.datePipe.transform(event.value, 'yyyy-MM-dd') || '';
-      console.log('Selected date:', this.selectedStartDate);
-      
-    }
-
-    onEndDateSelected(event: MatDatepickerInputEvent<Date>) {
-      this.selectedEndDate = this.datePipe.transform(event.value, 'yyyy-MM-dd') || '';
-      console.log('Selected date:', this.selectedEndDate);
-      
-    }
+  onEndDateSelected(event: MatDatepickerInputEvent<Date>) {
+    this.selectedEndDate = this.datePipe.transform(event.value, 'yyyy-MM-dd') || '';
+    console.log('Selected date:', this.selectedEndDate);
+  }
 }
