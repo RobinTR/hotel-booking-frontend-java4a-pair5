@@ -8,6 +8,7 @@ import { BookingComponent } from './features/booking/components/booking/booking.
 import { HotelDetailsComponent } from './features/hotel-details/components/hotel-details/hotel-details.component';
 import { PrivacyPolicyComponent } from './shared/components/footer/company/privacy-policy/privacy-policy.component';
 import { SssComponent } from './features/SSS/sss/sss.component';
+import { ContactComponent } from './features/contact/contact/contact.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,10 @@ export const routes: Routes = [
       {
         path: "sss",
         component: SssComponent
+      },
+      {
+        path: "contact",
+        component: ContactComponent
       }
     ]
   },
