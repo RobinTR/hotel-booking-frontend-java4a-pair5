@@ -1,0 +1,57 @@
+.small-carousel {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.small-carousel img {
+    height: auto;
+    width: 100%;
+}
+
+.button-deactive:active,
+.button-deactive:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.modal-dialog {
+    max-width: 80%;
+    padding-top: 50px;
+    width: 60%;
+    height: 80%;
+    margin: auto;
+}
+
+.td-custom {
+    vertical-align: middle;
+}
+
+.btn-custom {
+    text-align: right;
+    vertical-align: middle;
+}
+
+.about-info {
+    margin: 0 50%;
+}
+
+.carousel-custom-mid {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.vertical-middle {
+    vertical-align: middle;
+}
+
+.modal-left {
+    margin-left: 1rem;
+}
+
+.modal-margin-top {
+    margin-top: 1rem;
+}

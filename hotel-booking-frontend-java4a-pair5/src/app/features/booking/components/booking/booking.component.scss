@@ -1,0 +1,28 @@
+
+
+.form-floating .form-control {
+    padding: 0.5rem;
+    font-size: 0.875rem; /* Yazı boyutunu küçült */
+  }
+  
+  .form-floating label {
+    padding: 0.5rem;
+    font-size: 0.875rem; /* Etiket yazı boyutunu küçült */
+  }
+  
+  .row.g-3 {
+    margin-bottom: 0.5rem; /* Satırlar arası boşluğu küçült */
+  }
+  
+  .form-floating {
+    margin-bottom: 0.5rem; /* Input alanları arası boşluğu küçült */
+  }
+  
+  textarea.form-control {
+    height: auto; /* Textarea yüksekliğini otomatik ayarla */
+  }
+  
+  h5 {
+    font-size: 1rem; /* Kişi bilgisi başlıklarının yazı boyutunu küçült */
+    margin-bottom: 0.5rem; /* Kişi bilgisi başlıklarının alt boşluğunu küçült */
+  }
