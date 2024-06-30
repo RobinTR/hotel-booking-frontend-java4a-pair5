@@ -11,7 +11,7 @@ import { Hotel } from "../models/hotel";
 export class HotelsService {
   
   private apiControllerUrl = `${environment.apiUrl}/api/hotels`;
-  private selectedHotel: Hotel | null = null;
+  selectedHotel: Hotel | null = null;
 
   constructor(
     private _http: HttpClient
@@ -100,12 +100,46 @@ export class HotelsService {
       );
   }
 
-  setSelectedHotel(hotel: Hotel) {
-    this.selectedHotel = hotel;
+  searchByRoomFilters(hotelId: number, checkInDate: String | null, checkOutDate: String | null, roomCapacity: String | null, location?: String | null) {
+    let queryParams: any = {};
+    queryParams.hotelId = hotelId;
+
+    if (checkInDate) {
+      queryParams.checkInDate = checkInDate;
+    }
+
+    if (checkOutDate) {
+      queryParams.checkOutDate = checkOutDate;
+    }
+
+    if (roomCapacity) {
+      queryParams.roomCapacity = roomCapacity;
+    }
+
+    if (location) {
+      queryParams.location = location;
+    }
+
+    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByRoomFilters`, { params: queryParams })
+      .pipe(
+        map((response) => {
+          let hotel: Hotel[] = response.data;
+          console.log(response);
+          return hotel.at(0);
+        }));
   }
 
-  getSelectedHotel(): Hotel | null {
-    return this.selectedHotel;
+  searchByHotelId(hotelId: number | undefined) {
+    let queryParams: any = {};
+    queryParams.hotelId = hotelId;
+
+    return this._http.get<{ success: boolean; message: string; data: Hotel }>(`${this.apiControllerUrl}/getById`, { params: queryParams })
+      .pipe(
+        map((response) => {
+          let hotel: Hotel = response.data;
+          console.log(response);
+          return hotel;
+        }));
   }
 
 }

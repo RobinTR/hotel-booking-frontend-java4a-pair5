@@ -37,7 +37,7 @@ export class HotelCardComponent implements OnInit {
   }
 
   bookNow() {
-    this.hotelsService.setSelectedHotel(this.hotelData);
+    this.hotelsService.selectedHotel = this.hotelData;
     this.router.navigate(['/hoteldetails']);
   }
 }
