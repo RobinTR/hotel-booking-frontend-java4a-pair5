@@ -1,17 +1,48 @@
-@if(hotelList){
-<div class="container-xxl py-5" id="hotelListSection">
-    <div class="container">
+
+<div *ngIf="hotelList.items.length > 0">
+<div class="container-xxl py-5" id="hotelListSection"  >
+    <div class="container"> 
         <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+          
+           
             <h6 class="section-title text-center text-dark text-uppercase">Our Hotels</h6>
             <h1 class="mb-5">Explore Our <span class="text-warning text-uppercase">Hotels</span></h1>
         </div>
+        
         <div class="row g-4">
-            @for (hotel of hotelList.items; track $index) {
-            <app-hotel-card class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" [hotelName]="hotel.name"
-                [hotelDescription]="hotel.description" [hotelStars]="hotel.starRating" [hotelData]="hotel">
-            </app-hotel-card>
-            }
-
+            <div class="row g-4">
+                <div class="col-sm-12 d-flex justify-content-end align-items-center mt-10">
+                   
+                        <div class="dropdown">
+                          <button class="btn btn-default text-warning dropdown-toggle" type="button" id="dropdownMenuButton" >
+                            Sort by <span class="caret"></span>
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button class="dropdown-item" (click)="sortBy('priceLow')">Price: Low to High</button>
+                            <button class="dropdown-item" (click)="sortBy('priceHigh')">Price: High to Low</button>
+                            <button class="dropdown-item" (click)="sortBy('starRating')">Star Rating</button>
+                          </div>
+                        </div>
+                   
+                        
+                        <div class="btn-group">
+                        <button type="button" class="btn btn-default text-warning dropdown-toggle ml-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            FILTERING <span class="caret"></span>
+                           
+                        </button>
+                         <app-filtering></app-filtering>
+                    </div>
+                </div>
+            </div>
+            <!-- Döngü içindeki her otel kartı için col sınıflarını ekleyin -->
+            <div class="col-lg-4 col-md-6" *ngFor="let hotel of hotelList.items">
+                <app-hotel-card class="wow fadeInUp" data-wow-delay="0.1s"
+                    [hotelName]="hotel.name"
+                    [hotelDescription]="hotel.description"
+                    [hotelStars]="hotel.starRating"
+                    [hotelData]="hotel">
+                </app-hotel-card>
+            </div>
         </div>
         <div class="mt-4">
             <app-pagination [pageIndex]="hotelList.pageIndex" [pageSize]="hotelList.pageSize"
@@ -19,4 +50,4 @@
         </div>
         </div>
 </div>
-}
+</div>

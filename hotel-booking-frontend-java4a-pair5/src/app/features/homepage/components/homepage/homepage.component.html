@@ -13,6 +13,7 @@
                     </div>
                 </div>
             </div>
+           
             <div class="carousel-item">
                 <img class="w-100" src="layout-assets/img/carousel-2.jpg" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -41,7 +42,7 @@
 <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
         <div class="bg-white shadow" style="padding: 35px;">
-            <form [formGroup]="searchFormGroup">
+            <form [formGroup]="searchFormGroup" (ngSubmit)="searchHotels();searchByPerson();searchByDate()">
                 <div class="row g-2">
 
                     <div class="col-md-10">
@@ -54,20 +55,19 @@
 
                                 </div>
                             </div>
-                            <mat-form-field class="custom-form-field col-md-3">
-                                <mat-label>Check in date</mat-label>
-                                <input matInput [matDatepicker]="startDate" (dateChange)="onStartDateSelected($event)">
+                            <div class="col-md-3">
+                                <div class="date" id="date1" data-target-input="nearest">
+                                  <input type="date" class="form-control datetimepicker-input" formControlName="startDate"
+                                    placeholder="Check in" />
+                                </div>
+                              </div>
 
-                                <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
-                                <mat-datepicker #startDate></mat-datepicker>
-                            </mat-form-field>
-
-                            <mat-form-field class="custom-form-field col-md-3">
-                                <mat-label>Check out date</mat-label>
-                                <input matInput [matDatepicker]="endDate" (dateChange)="onEndDateSelected($event)">
-                                <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
-                                <mat-datepicker #endDate></mat-datepicker>
-                            </mat-form-field>
+                              <div class="col-md-3">
+                                <div class="date" id="date2" data-target-input="nearest">
+                                  <input type="date" formControlName="endDate" class="form-control datetimepicker-input"
+                                    placeholder="Check out" />
+                                </div>
+                              </div>
                             <div class="col-md-3">
                                 <div class="person" id="person" data-target-input="nearest">
                                     <input type="text" id="personInput" formControlName="person" class="form-control  "
@@ -78,21 +78,23 @@
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-outline-warning w-100 h-95"
-                            (click)="searchHotels();searchByPerson()">Submit</button>
+                        <button type="submit" class="btn btn-outline-warning w-100 h-95"
+                            >Submit</button>
                     </div>
                 </div>
             </form>
+            
+            
 
         </div>
-
+     
     </div>
 
 </div>
 
-<app-filters></app-filters>
 
-<app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!"></app-hotel-list>
+
+<app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!" [person]="person"></app-hotel-list>
 
 
 
