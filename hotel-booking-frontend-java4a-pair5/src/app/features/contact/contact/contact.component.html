@@ -29,44 +29,47 @@
                   tabindex="0"></iframe>
           </div>
           <div class="col-md-6">
-              <div class="wow fadeInUp" data-wow-delay="0.2s">
-                  <form>
-                      <div class="row g-3">
-                          <div class="col-md-6">
-                              <div class="form-floating">
-                                  <input type="text" class="form-control" id="name" placeholder="First Name">
-                                  <label for="name">First Name</label>
-                              </div>
-                          </div>
-                          <div class="col-md-6">
-                              <div class="form-floating">
-                                  <input type="text" class="form-control" id="surname" placeholder="Last Name">
-                                  <label for="surname">Last Name</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                            <div class="form-floating">
-                                <input type="email" class="form-control" id="email" placeholder="Your Email">
-                                <label for="email">Email</label>
-                            </div>
-                        </div>
-
-                          <div class="col-12">
-                              <div class="form-floating">
-                                  <textarea class="form-control" placeholder="Leave a message here" id="message" style="height: 150px"></textarea>
-                                  <label for="message">Message</label>
-                              </div>
-                          </div>
-                          <div class="col-12">
-                              <button class="btn btn-warning w-100 py-3" type="submit">Send Message</button>
+            <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <form [formGroup]="supportForm" (ngSubmit)="onSubmit()">
+              <div class="row g-2">
+                  <div class="col-md-6">
+                      <div class="form-floating">
+                          <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="First Name">
+                          <label for="firstName">First Name</label>
+                          <div *ngIf="supportForm.get('firstName')?.invalid && supportForm.get('firstName')?.touched" class="text-danger">
+                            Please enter your name
                           </div>
                       </div>
-                  </form>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-floating">
+                          <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Last Name">
+                          <label for="lastName">Last Name</label>
+                          <div *ngIf="supportForm.get('lastName')?.invalid && supportForm.get('lastName')?.touched" class="text-danger">
+                            Please enter your surname
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-floating">
+                          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Your Email">
+                          <label for="email">Email</label>
+                          <div *ngIf="supportForm.get('email')?.invalid && supportForm.get('email')?.touched" class="text-danger">
+                            Please enter your email
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <div class="form-floating">
+                          <textarea class="form-control" placeholder="Leave a message here" id="description" formControlName="description" style="height: 150px"></textarea>
+                          <label for="description">Message</label>
+                      </div>
+                  </div>
+                  <div class="col-12">
+                      <button class="btn btn-warning w-100 py-3" type="submit" [disabled]="supportForm.invalid">Send Message</button>
+                  </div>
               </div>
-          </div>
+          </form>
       </div>
   </div>
 </div>
-<!-- Contact End -->
-
-

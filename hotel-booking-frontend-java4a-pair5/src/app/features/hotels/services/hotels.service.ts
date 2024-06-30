@@ -9,7 +9,7 @@ import { Hotel } from "../models/hotel";
   providedIn: 'root'
 })
 export class HotelsService {
-  
+
   private apiControllerUrl = `${environment.apiUrl}/api/hotels`;
   selectedHotel: Hotel | null = null;
 
@@ -63,8 +63,8 @@ export class HotelsService {
   }
   searchByDate(startDate: string,endDate:string): Observable<PaginatedList<Hotel>> {
     const queryParams = { startDate,endDate };
- 
-  
+
+
     return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByDate`, { params : queryParams })
       .pipe(
         map((response) => {
@@ -83,7 +83,7 @@ export class HotelsService {
 
   searchByPerson(person: number) : Observable<PaginatedList<Hotel>> {
     const queryParams = { person };
-  
+
     return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByRoomCapacityHotels`, { params: queryParams })
       .pipe(
         map((response) => {
