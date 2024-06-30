@@ -30,7 +30,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 export class HomepageComponent {
   location!: string;
   person!: number;
-
   selectedStartDate: string | null = null;
   selectedEndDate: string | null = null;
   searchFormGroup!: FormGroup;
@@ -51,13 +50,11 @@ export class HomepageComponent {
     this.person = this.searchFormGroup.value.person;
   }
 
-  onStartDateSelected(event: MatDatepickerInputEvent<Date>) {
-    this.selectedStartDate = this.datePipe.transform(event.value, 'yyyy-MM-dd') || '';
-    console.log('Selected date:', this.selectedStartDate);
+  searchByDate(){
+    this.selectedStartDate=this.searchFormGroup.value.startDate;
+    this.selectedEndDate=this.searchFormGroup.value.endDate;
   }
 
-  onEndDateSelected(event: MatDatepickerInputEvent<Date>) {
-    this.selectedEndDate = this.datePipe.transform(event.value, 'yyyy-MM-dd') || '';
-    console.log('Selected date:', this.selectedEndDate);
-  }
+
+
 }

@@ -5,18 +5,25 @@ import { PaginatedList } from '../../../../core/models/paginated-list';
 import { HotelCardComponent } from '../hotel-card/hotel-card.component';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 import { Hotel } from '../../models/hotel';
-import { log } from 'console';
+import { FilteringComponent } from '../../../homepage/components/filtering-modal/filtering.component';
+
 
 @Component({
   selector: 'app-hotel-list',
   standalone: true,
-  imports: [CommonModule, HotelCardComponent, PaginationComponent],
+  imports: [CommonModule, HotelCardComponent, PaginationComponent,FilteringComponent],
   templateUrl: './hotel-list.component.html',
   styleUrl: './hotel-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HotelListComponent implements OnInit, OnChanges {
-  hotelList!: PaginatedList<Hotel>;
+  sortedHotelList: Hotel[] = [];
+  hotelList: PaginatedList<Hotel>={
+    items: [],
+    pageIndex: 0,
+    pageSize: 0,
+    totalCount: 0
+  }
   @Input() location: string = '';
   @Input() startDate!: string;
   @Input() endDate!:string;
@@ -58,11 +65,12 @@ export class HotelListComponent implements OnInit, OnChanges {
 
   
     }else if ( this.startDate && this.endDate) {
-      console.log(this.startDate,this.endDate);
       this.searchHotelsByDate();
       
   
-    }
+    }else if(this.person){
+      this.searchHotelsByPerson();
+   }
      else {
       this.getHotelList(0, 9);
     }
@@ -102,7 +110,7 @@ export class HotelListComponent implements OnInit, OnChanges {
     if ( this.startDate && this.endDate) {
       console.log(this.startDate,this.endDate);
       
-      this.hotelsService.searchByDate(this.startDate,this.endDate)
+      this.hotelsService.searchByDate(this.startDate!,this.endDate!)
         .subscribe({
           next: (hotelList) => {
             this.hotelList = hotelList;  
@@ -136,4 +144,74 @@ export class HotelListComponent implements OnInit, OnChanges {
     this.getHotelList(requestedPageIndex, this.hotelList.pageSize);
     this.changePage.emit(requestedPageIndex);
   }
+  sortBy(criteria: string) {
+    if (!this.hotelList || !this.hotelList.items) {
+      console.error('Hotel list or items are not defined.');
+      return;
+    }
+  
+    switch (criteria) {
+      case 'priceLow':
+        this.sortedHotelList = this.sortByPriceLow();
+        break;
+      case 'priceHigh':
+        this.sortedHotelList = this.sortByPriceHigh();
+        break;
+      case 'starRating':
+        this.sortedHotelList = this.sortByStarRating();
+        break;
+      default:
+        this.sortedHotelList = this.hotelList.items.slice(); // Varsayılan olarak herhangi bir sıralama yapma
+        break;
+    }
+    this.change.detectChanges();
+  }
+  
+  sortByPriceLow(): any[] {
+    if (!this.hotelList || !this.hotelList.items) {
+      return [];
+    }
+  
+    return this.hotelList.items.sort((a, b) => {
+      const lowestPriceA = this.getLowestRoomPrice(a);
+      const lowestPriceB = this.getLowestRoomPrice(b);
+      return lowestPriceA - lowestPriceB;
+    });
+  }
+  
+  sortByPriceHigh(): any[] {
+    if (!this.hotelList || !this.hotelList.items) {
+      return [];
+    }
+  
+    return this.hotelList.items.sort((a, b) => {
+      const highestPriceA = this.getHighestRoomPrice(a);
+      const highestPriceB = this.getHighestRoomPrice(b);
+      return highestPriceB - highestPriceA;
+    });
+  }
+  
+  sortByStarRating(): any[] {
+    if (!this.hotelList || !this.hotelList.items) {
+      return [];
+    }
+  
+    return this.hotelList.items.sort((a, b) => b.starRating - a.starRating);
+  }
+  
+  getLowestRoomPrice(hotel: any): number {
+    if (hotel.rooms && hotel.rooms.length > 0) {
+      return hotel.rooms.reduce((minPrice: number, room: any) => Math.min(minPrice, room.cost), Infinity);
+    }
+    return Infinity;
+  }
+  
+  getHighestRoomPrice(hotel: any): number {
+    if (hotel.rooms && hotel.rooms.length > 0) {
+      return hotel.rooms.reduce((maxPrice: number, room: any) => Math.max(maxPrice, room.cost), -Infinity);
+    }
+    return -Infinity;
+  }
+  
+
 }

@@ -1,0 +1,64 @@
+.card {
+   border: 1px  rgb(250, 247, 242);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 180px;
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: #fff;
+    padding: 5px 15px;
+   // border-bottom: 1px solid #ddd;
+}
+
+.card-header h6.title {
+    font-size: 16px;
+    margin-bottom: 0;
+    font-palette: black;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-group-item {
+    margin-bottom: 15px;
+}
+
+.filter-content {
+    padding: 15px;
+}
+
+.custom-checkbox {
+    margin-bottom: 10px;
+}
+
+.custom-checkbox .badge {
+    font-size: 8px;
+    margin-left: 10px;
+
+}
+
+.custom-control-label {
+    font-size: 14px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-control {
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.text-right {
+    text-align: right;
+   
+}
