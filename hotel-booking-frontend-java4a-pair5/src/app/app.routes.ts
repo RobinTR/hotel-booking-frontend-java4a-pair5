@@ -9,6 +9,9 @@ import { HotelDetailsComponent } from './features/hotel-details/components/hotel
 import { PrivacyPolicyComponent } from './shared/components/footer/company/privacy-policy/privacy-policy.component';
 import { SssComponent } from './features/SSS/sss/sss.component';
 import { ContactComponent } from './features/contact/component/contact/contact.component';
+import { securedRouteGuard } from './core/auth/guards/secured-route.guard';
+import { UserProfileComponent } from './features/user-profile/user-profile.component';
+import { AuthRoles } from './core/auth/constants/auth-roles';
 
 export const routes: Routes = [
   {
@@ -26,6 +29,7 @@ export const routes: Routes = [
       {
         path: "booking",
         //component: BookingComponent
+        canActivate: [securedRouteGuard],
         loadComponent: () => import('./features/booking/components/booking/booking.component').then(b => b.BookingComponent)
       },
       {
@@ -44,6 +48,16 @@ export const routes: Routes = [
       {
         path: "contact",
         component: ContactComponent
+      },
+      {
+        path: "user-profile",
+        data: {
+          securedRoute: {
+            requiredRole: [AuthRoles.USER],
+          },
+        },
+        canActivate: [securedRouteGuard],
+        component: UserProfileComponent
       }
     ]
   },
