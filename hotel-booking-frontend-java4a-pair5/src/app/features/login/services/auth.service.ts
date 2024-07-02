@@ -24,11 +24,13 @@ export class AuthService extends CoreAuthService {
                 tap((response: LoginResponse) => {
                     if (response.success) {
                         this.token = response.data;
+                        this._logged.next();
+                        this._isLogged.next(true);
                     } else {
-                        // Handle unsuccessful login here if needed
+                        
                     }
                 }),
-                map((response: LoginResponse) => response.data) // Map the response to return only the LoggedUser data
+                map((response: LoginResponse) => response.data)
             );
     }
 }
