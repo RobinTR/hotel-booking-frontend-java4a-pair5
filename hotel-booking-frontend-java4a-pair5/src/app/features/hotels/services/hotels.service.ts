@@ -142,4 +142,29 @@ export class HotelsService {
         }));
   }
 
+  searchHotelsByFilters(minPrice: number, maxPrice: number,featureIds: number[] ): Observable<PaginatedList<Hotel>> {
+    let queryParams = new HttpParams()
+    .set('minPrice', minPrice.toString())
+    .set('maxPrice', maxPrice.toString());
+
+    featureIds.forEach(id => {
+      queryParams = queryParams.append('featureIds', id.toString());
+    });
+
+  
+    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchAllHotelsWithFilters`, { params: queryParams })
+      .pipe(
+        map((response) => {
+          const paginatedList: PaginatedList<Hotel> = {
+            items: response.data,
+            pageIndex: 0,
+            pageSize: response.data.length,
+            totalCount: response.data.length,
+          };
+          console.log(response);
+
+          return paginatedList;
+        })
+      );
+  }
 }

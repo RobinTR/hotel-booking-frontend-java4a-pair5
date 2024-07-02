@@ -1,64 +1,80 @@
-<aside class="col-sm-2">
-	
-	<div class="card" >
-		<article class="card-group-item">
-			<header class="card-header">
-				<h6 class="title ">Total Price </h6>
-			</header>
-			<div class="filter-content">
-				<div class="card-body">
-				<div class="form-row">
-				<div class="form-group col-md-10">
-				  <label>MIN</label>
-				  <input type="number" class="form-control" id="inputEmail4" placeholder="$0">
-				</div>
-				<div class="form-group col-md-10 ">
-				  <label>MAX</label>
-				  <input type="number" class="form-control" placeholder="$1,0000">
-				</div>
-				</div>
-				</div> <!-- card-body.// -->
-			</div>
-		</article> <!-- card-group-item.// -->
-		<article class="card-group-item">
-			<header class="card-header">
-				<h6 class="title">Popular Filters </h6>
-			</header>
-			<div class="filter-content">
-				<div class="card-body">
-					<div class="custom-control custom-checkbox">
-						  <input type="checkbox" class="custom-control-input" id="Check1">
-						  <label class="custom-control-label" for="Check1">All inclusive</label>
-					</div> <!-- form-check.// -->
-	
-					<div class="custom-control custom-checkbox">
-						  <input type="checkbox" class="custom-control-input" id="Check2">
-						 <label class="custom-control-label" for="Check2">Food</label>
-					</div> <!-- form-check.// -->
-	
-					<div class="custom-control custom-checkbox">
-						  <input type="checkbox" class="custom-control-input" id="Check3">
-						  <label class="custom-control-label" for="Check3">Pet Friendly</label>
-					</div> <!-- form-check.// -->
-	
-					<div class="custom-control custom-checkbox">
-						  <input type="checkbox" class="custom-control-input" id="Check4">
-						  <label class="custom-control-label" for="Check4">Smoke Friendly</label>
-					</div>
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Filters</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+<div class="row">
+    <aside class="col-sm-2">
+        <form [formGroup]="filtersForm"   >
+            <div class="card">
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title">Total Price </h6>
+                    </header>
+                    <div class="filter-content">
+                        <div class="card-body">
+                            <div class="form-row">
+                                <div class="form-group col-md-10">
+                                    <label>MIN</label>
+                                    <input type="number" class="form-control" id="minPrice" placeholder="$0" min="0" formControlName="minPrice">
+                                </div>
+                                <div class="form-group col-md-10">
+                                    <label>MAX</label>
+                                    <input type="number" class="form-control" id="maxPrice" placeholder="$1,0000" min="0" formControlName="maxPrice">
+                                </div>
+                            </div>
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- card-group-item.// -->
+                <article class="card-group-item">
+                    <header class="card-header">
+                        <h6 class="title">Popular Filters </h6>
+                    </header>
+                    <div class="filter-content">
+                        <div class="card-body">
+                            <!-- form-check.// -->
 
-					<div class="custom-control custom-checkbox">
-						<input type="checkbox" class="custom-control-input" id="Check5">
-						<label class="custom-control-label" for="Check5">Wifi</label>
-				  </div>
-					 <!-- form-check.// -->
-				</div> <!-- card-body.// -->
-			</div>
-		</article> <!-- card-group-item.// -->
-	</div> <!-- card.// -->
-	
-	
-	
-		</aside> <!-- col.// -->
-	<!-- row.// -->
-	
-	
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="Check1" formControlName="Check1">
+                                <label class="custom-control-label" for="Check1">Food</label>
+                            </div> <!-- form-check.// -->
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="Check2" formControlName="Check2">
+                                <label class="custom-control-label" for="Check2">Pet Friendly</label>
+                            </div> <!-- form-check.// -->
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="Check3" formControlName="Check3">
+                                <label class="custom-control-label" for="Check3">Smoke Friendly</label>
+                            </div>
+
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="Check4" formControlName="Check4">
+                                <label class="custom-control-label" for="Check4">Wifi</label>
+                            </div> <!-- form-check.// -->
+							<div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="Check5" formControlName="Check5">
+                                <label class="custom-control-label" for="Check5">All inclusive</label>
+                            </div> 
+                        </div> <!-- card-body.// -->
+                    </div>
+                </article> <!-- card-group-item.// -->
+            </div> <!-- card.// -->
+        </form>
+    </aside> <!-- col.// -->
+    <!-- row.// -->
+</div> <!-- row.// -->
+</div>
+<div class="modal-footer">
+  <button type="submit" class="btn btn-outline-warning" (click)="searchByFilters()" >Apply</button>
+  <button type="button" class="btn btn-outline-warning" data-bs-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+</div>

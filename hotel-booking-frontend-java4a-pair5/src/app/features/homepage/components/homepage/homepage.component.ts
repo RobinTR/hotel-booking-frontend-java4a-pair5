@@ -33,7 +33,7 @@ export class HomepageComponent {
   selectedStartDate: string | null = null;
   selectedEndDate: string | null = null;
   searchFormGroup!: FormGroup;
-  constructor(formBuilder: FormBuilder, private datePipe: DatePipe) {
+  constructor(formBuilder: FormBuilder) {
     this.searchFormGroup = formBuilder.group({
       location: [''],
       startDate: [''],
