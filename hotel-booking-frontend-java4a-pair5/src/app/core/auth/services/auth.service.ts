@@ -1,27 +1,33 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { AccessTokenPayload } from '../models/access-token-payload';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
+import { AuthRoles } from '../constants/auth-roles';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   protected readonly _logged = new Subject<void>();
+  protected readonly _loggedOut = new Subject<void>();
+  protected readonly _isLogged = new BehaviorSubject<boolean>(this.isAuthenticated);
 
-  constructor() { }
+  constructor(@Inject(DOCUMENT) protected document: Document) { }
 
   public get logged(): Observable<void> {
     return this._logged.asObservable();
   }
 
-  protected readonly _loggedOut = new Subject<void>();
   public get loggedOut(): Observable<void> {
     return this._loggedOut.asObservable();
   }
 
-  protected readonly _isLogged = new BehaviorSubject<boolean>(this.isAuthenticated);
   public get isLogged(): Observable<boolean> {
     return this._isLogged.asObservable();
+  }
+
+  protected get localStorage(): Storage | undefined {
+    return this.document.defaultView?.localStorage;
   }
 
   public get tokenPayload(): AccessTokenPayload | null {
@@ -35,7 +41,7 @@ export class AuthService {
       return payload;
     } catch (error) {
       console.error('Invalid token payload', error);
-      
+
       return null;
     }
   }
@@ -54,10 +60,10 @@ export class AuthService {
     return true;
   }
 
-  public isAuthorized(requiredRoles: string[]): boolean {
+  public isAuthorized(requiredRoles: AuthRoles[]): boolean {
     if (!this.isAuthenticated) return false;
 
-    const tokenRoles = this.tokenPayload!.roles.map((role) => role.role);
+    const tokenRoles = this.tokenPayload!.roles.map((role) => role);
 
     if (
       !requiredRoles.some((requiredRole) =>
@@ -71,16 +77,16 @@ export class AuthService {
   }
 
   public logout(): void {
-    localStorage.removeItem('accessToken');
+    this.localStorage?.removeItem('accessToken');
     this._loggedOut.next();
     this._isLogged.next(false);
   }
 
-  protected get token(): string | null {
-    return localStorage.getItem('accessToken');
+  public get token(): string | null {
+    return this.localStorage?.getItem('accessToken') ?? null;
   }
 
   protected set token(token: string) {
-    localStorage.setItem('accessToken', token);
+    this.localStorage?.setItem('accessToken', token);
   }
 }
