@@ -69,11 +69,13 @@
                                 </div>
                               </div>
                             <div class="col-md-3">
-                                <div class="person" id="person" data-target-input="nearest">
-                                    <input type="text" id="personInput" formControlName="person" class="form-control  "
-                                        placeholder="Person" />
-
-                                </div>
+                                <select class="form-select" formControlName="person">
+                                    <option value="" disabled selected hidden>Person </option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                  </select>
                             </div>
                         </div>
                     </div>
