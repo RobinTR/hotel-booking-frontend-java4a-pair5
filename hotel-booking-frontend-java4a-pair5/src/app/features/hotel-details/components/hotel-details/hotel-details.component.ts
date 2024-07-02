@@ -7,7 +7,7 @@ import { HotelsService } from '../../../hotels/services/hotels.service';
 import { HotelFeatureComponent } from '../hotel-feature/hotel-feature.component';
 import { RouterModule } from '@angular/router';
 import { HotelFeatureForModalComponent } from '../hotel-feature/hotel-feature-for-modal/hotel-feature-for-modal.component';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HotelDetailsListComponent } from '../hotel-details-list/hotel-details-list.component';
 
 @Component({
@@ -25,13 +25,13 @@ export class HotelDetailsComponent implements OnInit {
   checkIn?: String;
   checkOut?: String;
   roomCapacity?: String;
-
+  isSubmitted = false;
 
   constructor(private hotelsService: HotelsService, private fb: FormBuilder, private cdr: ChangeDetectorRef) {
     this.filterForm = this.fb.group({
       location: [''],
-      checkIn: [''],
-      checkOut: [''],
+      checkIn: ['', Validators.required],
+      checkOut: ['', Validators.required],
       roomCapacity: [''],
     });
   }
@@ -42,6 +42,8 @@ export class HotelDetailsComponent implements OnInit {
 
   onFilterFormSubmit() {
     const currentFormValues = this.filterForm.value;
+
+    if (!this.filterForm.valid) alert('Please fill in the Check-in and Check-out dates.');
 
     if (JSON.stringify(this.previousFormValues) !== JSON.stringify(currentFormValues)) {
       this.hotelsService.searchByRoomFilters(

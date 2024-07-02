@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, O
 import { Hotel } from '../../../hotels/models/hotel';
 import { CommonModule } from '@angular/common';
 import { HotelFeatureComponent } from '../hotel-feature/hotel-feature.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Room } from '../../../room/models/room';
 import { HotelsService } from '../../../hotels/services/hotels.service';
 import { HotelDetailsService } from '../../services/hotel-details.service';
@@ -19,18 +19,16 @@ import { HotelFeatureForModalComponent } from '../hotel-feature/hotel-feature-fo
 })
 export class HotelDetailsListComponent implements AfterViewInit, OnChanges {
   @Input() selectedHotel?: Hotel | null;
+  @Input() filterForm!: FormGroup;
   selectedRoom?: Room;
   @ViewChild('carouselIndicators') carouselIndicators?: ElementRef;
   @ViewChild('carouselModalIndicators') carouselModalIndicators?: ElementRef;
 
-  constructor(private renderer: Renderer2,private hotelsService: HotelsService, private hotelDetailsService: HotelDetailsService, private router: Router) {
+  constructor(private renderer: Renderer2,private hotelsService: HotelsService, private hotelDetailsService: HotelDetailsService, private router: Router, private fb: FormBuilder) {
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(JSON.stringify(this.selectedHotel) + " onChange");
-    console.log(this.selectedHotel as unknown as Hotel[]);
-
     /*if (changes['selectedHotel']) {
       // Handle changes to selectedHotel here
       if (!changes['selectedHotel'].firstChange) {
@@ -52,6 +50,27 @@ export class HotelDetailsListComponent implements AfterViewInit, OnChanges {
   selectRoom(room: Room) {
     this.selectedRoom = room;
     this.setupCarouselForModalIndicators();
+  }
+
+  onBookNowClick(hotel: Hotel, room: Room) {
+    const checkIn = this.filterForm.value.checkIn;
+    const checkOut = this.filterForm.value.checkOut;
+
+    if (!checkIn || !checkOut) {
+      alert('Please fill in the Check-in and Check-out dates.');
+      if (!checkIn) {
+        (document.getElementById('date1') as HTMLInputElement).classList.add('is-invalid');
+      }
+      if (!checkOut) {
+        (document.getElementById('date2') as HTMLInputElement).classList.add('is-invalid');
+      }
+    } else {
+      this.hotelDetailsService.hotelData = hotel;
+      this.hotelDetailsService.roomData = room;
+      this.hotelDetailsService.checkIn = checkIn;
+      this.hotelDetailsService.checkOut = checkOut;
+      this.router.navigate(['/booking']);
+    }
   }
 
   navigateToBooking(hotel: Hotel, room: Room) {

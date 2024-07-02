@@ -2,7 +2,7 @@
   <div class="container-fluid pb-5 wow fadeIn mt-4" data-wow-delay="0.1s">
     <div class="container">
       <div class="bg-white shadow" style="padding: 35px;">
-        <form [formGroup]="filterForm" (ngSubmit)="onFilterFormSubmit()">
+        <form [formGroup]="filterForm">
         <div class="row g-2">
           
             <div class="col-md-10">
@@ -15,7 +15,7 @@
                 </div>
                 <div class="col-md-3">
                   <div class="date" id="date2" data-target-input="nearest">
-                    <input type="date" formControlName="checkOut" class="form-control datetimepicker-input"
+                    <input type="date" class="form-control datetimepicker-input" formControlName="checkOut"
                       placeholder="Check out" />
                   </div>
                 </div>
@@ -25,7 +25,7 @@
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="3">4</option>
+                    <option value="4">4</option>
                   </select>
                   
                 </div>
@@ -35,7 +35,7 @@
             </div>
             
             <div class="col-md-2">
-              <button type="submit" class="btn btn-primary w-100">Submit</button>
+              <button type="submit" class="btn btn-primary w-100" (click)="onFilterFormSubmit()">Submit</button>
             </div>
 
         </div>
@@ -44,7 +44,7 @@
     </div>
   </div>
 
-  <app-hotel-details-list [selectedHotel]="selectedHotel"></app-hotel-details-list>
+  <app-hotel-details-list [selectedHotel]="selectedHotel" [filterForm]="filterForm"></app-hotel-details-list>
 
   <app-reviews></app-reviews>
 

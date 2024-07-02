@@ -105,11 +105,11 @@ export class HotelsService {
     queryParams.hotelId = hotelId;
 
     if (checkInDate) {
-      queryParams.checkInDate = checkInDate;
+      queryParams.startDate = checkInDate;
     }
 
     if (checkOutDate) {
-      queryParams.checkOutDate = checkOutDate;
+      queryParams.endDate = checkOutDate;
     }
 
     if (roomCapacity) {
