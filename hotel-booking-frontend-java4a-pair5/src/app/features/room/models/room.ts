@@ -7,5 +7,4 @@ export interface Room {
     number: number;
     cost: number;
     imageUrls: RoomImage[];
-    isAvailable: boolean;
 }

@@ -6,5 +6,4 @@ export interface RoomType {
     description: String;
     capacity: number;
     features: RoomTypeFeature[];
-    allInclusive: boolean;
 }

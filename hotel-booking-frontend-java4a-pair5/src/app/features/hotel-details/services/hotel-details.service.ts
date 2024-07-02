@@ -8,4 +8,6 @@ import { Room } from "../../room/models/room";
 export class HotelDetailsService {
     hotelData?: Hotel;
     roomData?: Room;
+    checkIn?: String;
+    checkOut?: String;
 }
