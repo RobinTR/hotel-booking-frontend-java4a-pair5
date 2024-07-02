@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LayoutComponent } from '../../../../shared/components/layout/layout.component';
 import { HotelListComponent } from '../../../hotels/components/hotel-list/hotel-list.component';
@@ -8,38 +8,37 @@ import { PaginationComponent } from '../../../../shared/components/pagination/pa
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FiltersComponent } from '../filters/filters.component';
 import { provideNativeDateAdapter } from '@angular/material/core';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerInputEvent, MatDatepickerModule } from '@angular/material/datepicker';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatNativeDateModule } from '@angular/material/core';
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
   providers: [provideNativeDateAdapter(), DatePipe],
-  imports: [LayoutComponent, CommonModule, RouterModule, HotelListComponent, ArrowUpComponent, PaginationComponent, FormsModule, ReactiveFormsModule, FiltersComponent, MatInputModule,
-    MatDatepickerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatNativeDateModule],
+  imports: [LayoutComponent, CommonModule, RouterModule, HotelListComponent, ArrowUpComponent, PaginationComponent, FormsModule, ReactiveFormsModule, FiltersComponent],
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomepageComponent {
+export class HomepageComponent implements OnInit {
+  @Inject(DOCUMENT)
+  private document!: Document;
+  isOldUser: boolean = false;
   location!: string;
   person!: number;
   selectedStartDate: string | null = null;
   selectedEndDate: string | null = null;
   searchFormGroup!: FormGroup;
-  constructor(formBuilder: FormBuilder) {
+
+  constructor(formBuilder: FormBuilder, private change: ChangeDetectorRef) {
     this.searchFormGroup = formBuilder.group({
       location: [''],
       startDate: [''],
       endDate: [''],
       person: ['']
     });
+  }
+
+  ngOnInit(): void {
+    this.detectNewUser();
   }
 
   searchHotels() {
@@ -50,11 +49,25 @@ export class HomepageComponent {
     this.person = this.searchFormGroup.value.person;
   }
 
-  searchByDate(){
-    this.selectedStartDate=this.searchFormGroup.value.startDate;
-    this.selectedEndDate=this.searchFormGroup.value.endDate;
+  searchByDate() {
+    this.selectedStartDate = this.searchFormGroup.value.startDate;
+    this.selectedEndDate = this.searchFormGroup.value.endDate;
   }
 
+  detectNewUser() {
+    let isOldUser = Boolean(
+      this.document.defaultView?.localStorage?.getItem('oldUser')
+    );
 
+    if (!isOldUser) {
+      this.document.defaultView?.localStorage?.setItem('oldUser', 'true');
+      return;
+    }
+    
+    setTimeout(() => {
+      this.isOldUser = isOldUser;
+      this.change.markForCheck();
+    }, 5000);
+  }
 
 }
