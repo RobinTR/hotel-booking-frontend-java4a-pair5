@@ -24,17 +24,15 @@
                           </div>
                         </div>
                    
-                        
                         <div class="btn-group">
                         <button type="button" class="btn btn-default text-warning dropdown-toggle ml-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             FILTERING <span class="caret"></span>
                            
                         </button>
-                         <app-filtering></app-filtering>
+                         <app-filters  (filterChanged)="onFilterChanged($event)" ></app-filters>
                     </div>
                 </div>
             </div>
-            <!-- Döngü içindeki her otel kartı için col sınıflarını ekleyin -->
             <div class="col-lg-4 col-md-6" *ngFor="let hotel of hotelList.items">
                 <app-hotel-card class="wow fadeInUp" data-wow-delay="0.1s"
                     [hotelName]="hotel.name"

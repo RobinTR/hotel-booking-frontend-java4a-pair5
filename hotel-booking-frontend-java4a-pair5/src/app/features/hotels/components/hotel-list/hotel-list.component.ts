@@ -5,19 +5,20 @@ import { PaginatedList } from '../../../../core/models/paginated-list';
 import { HotelCardComponent } from '../hotel-card/hotel-card.component';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
 import { Hotel } from '../../models/hotel';
-import { FilteringComponent } from '../../../homepage/components/filtering-modal/filtering.component';
+import {  FiltersComponent } from '../../../homepage/components/filters/filters.component';
 
 
 @Component({
   selector: 'app-hotel-list',
   standalone: true,
-  imports: [CommonModule, HotelCardComponent, PaginationComponent,FilteringComponent],
+  imports: [CommonModule, HotelCardComponent, PaginationComponent,FiltersComponent],
   templateUrl: './hotel-list.component.html',
   styleUrl: './hotel-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HotelListComponent implements OnInit, OnChanges {
   sortedHotelList: Hotel[] = [];
+  filteredHotelList: Hotel[] = [];
   hotelList: PaginatedList<Hotel>={
     items: [],
     pageIndex: 0,
@@ -31,7 +32,7 @@ export class HotelListComponent implements OnInit, OnChanges {
   @Input() filterByHotelId: number | null = null;
   @Input() initialPageIndex: number = 0;
   @Output() changePage = new EventEmitter<number>();
-
+  
   constructor(private hotelsService: HotelsService, private change: ChangeDetectorRef) {
 
   }
@@ -52,7 +53,7 @@ export class HotelListComponent implements OnInit, OnChanges {
       this.getHotelList(this.initialPageIndex, 9);
     }
   }
-
+   
   ngOnChanges(changes: SimpleChanges): void {
     /*if (
       changes['filterByHotelId'] &&
@@ -212,6 +213,20 @@ export class HotelListComponent implements OnInit, OnChanges {
     }
     return -Infinity;
   }
-  
+  onFilterChanged(filters: { minPrice: number, maxPrice: number, featureIds: number[] }): void {
+    if (!this.hotelList || !this.hotelList.items) {
+      console.error('Hotel list or items are not defined.');
+      return;
+    }
+    this.hotelsService.searchHotelsByFilters(filters.minPrice, filters.maxPrice, filters.featureIds)
+      .subscribe({
+        next: (hotelList) => {
+          this.hotelList = hotelList;
+        },
+        error: (error) => {
+          console.error('Error applying filters:', error);
+        }
+      });
+  }
 
 }
