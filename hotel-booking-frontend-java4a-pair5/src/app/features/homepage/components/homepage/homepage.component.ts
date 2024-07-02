@@ -19,8 +19,6 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomepageComponent implements OnInit {
-  @Inject(DOCUMENT)
-  private document!: Document;
   isOldUser: boolean = false;
   location!: string;
   person!: number;
@@ -28,7 +26,7 @@ export class HomepageComponent implements OnInit {
   selectedEndDate: string | null = null;
   searchFormGroup!: FormGroup;
 
-  constructor(formBuilder: FormBuilder, private change: ChangeDetectorRef) {
+  constructor(formBuilder: FormBuilder, private change: ChangeDetectorRef, @Inject(DOCUMENT) private document: Document) {
     this.searchFormGroup = formBuilder.group({
       location: [''],
       startDate: [''],
