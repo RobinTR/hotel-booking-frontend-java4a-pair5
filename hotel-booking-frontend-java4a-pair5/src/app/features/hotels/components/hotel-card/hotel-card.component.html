@@ -21,7 +21,9 @@
             </div>
         </div>
 
-        <p class="text-body mb-2">{{ hotelDescription }}</p>
+        <p class="text-body mb-2 scrollable-text">
+          <span class="truncate-text">{{ hotelDescription }}</span>
+      </p>
         <div class="d-flex justify-content-center">
             <a class="btn btn-sm btn-dark rounded py-2 px-4 " (click)="bookNow()">Book Now</a>
         </div>

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, SlicePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Hotel } from '../../models/hotel';
 import { Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { HotelsService } from '../../services/hotels.service';
 @Component({
   selector: 'app-hotel-card',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, SlicePipe],
   templateUrl: './hotel-card.component.html',
   styleUrl: './hotel-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
