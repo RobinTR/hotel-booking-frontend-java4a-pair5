@@ -2,3 +2,41 @@
   max-height: 10rem; /* Adjust the height as needed */
   overflow-y: auto;
 }
+
+.size {
+  height: 35rem;
+}
+
+.book-button {
+  align-items: center;
+}
+
+.room-item {
+  position: relative;
+  padding-bottom: 50px; /* Button için yeterli boşluk bırak */
+}
+
+.book-now-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background: #fff; /* İsteğe bağlı olarak arka plan rengi ekleyebilirsiniz */
+}
+
+.d-flex {
+  display: flex;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.ms-1 {
+  margin-left: 0.25rem;
+}

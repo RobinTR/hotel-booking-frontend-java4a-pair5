@@ -21,3 +21,7 @@
   .dropdown-item {
     color: #333; /* Dropdown öğelerinin metin rengi */
   }
+
+  #overr {
+    --bs-backdrop-zindex: 0;
+}

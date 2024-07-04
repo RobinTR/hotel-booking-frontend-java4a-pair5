@@ -14,6 +14,7 @@ import { AuthRoles } from './core/auth/constants/auth-roles';
 import { UserProfileComponent } from './features/user-profile/components/user-profile/user-profile.component';
 import { PaymentByCardComponent } from './features/user-profile/components/payment-by-card/payment-by-card.component';
 import { PasswordComponent } from './features/user-profile/components/password/password.component';
+import { BookingListComponent } from './features/booking-list/booking-list.component';
 
 export const routes: Routes = [
   {
@@ -44,7 +45,7 @@ export const routes: Routes = [
         component: PrivacyPolicyComponent
       },
       {
-        path: "sss",
+        path: "faq",
         component: SssComponent
       },
       {
@@ -61,7 +62,7 @@ export const routes: Routes = [
         canActivate: [securedRouteGuard],
         component: UserProfileComponent,
        
-      } ,
+      },
       {
           path:"payment-by-card",
           data: {
@@ -81,6 +82,16 @@ export const routes: Routes = [
           },
           canActivate: [securedRouteGuard],
           component:PasswordComponent
+        },
+        {
+          path:"booking-list",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.USER],
+            },
+          },
+          canActivate: [securedRouteGuard],
+          component: BookingListComponent
         }
     ]
   },

@@ -1,4 +1,6 @@
-<div class="container-fluid p-0 mb-5">
+
+
+<div class="container p-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -39,7 +41,7 @@
 </div>
 
 
-<div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s">
+<div class="container booking pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
         <div class="bg-white shadow" style="padding: 35px;">
             <form [formGroup]="searchFormGroup" (ngSubmit)="searchHotels();searchByPerson();searchByDate()">
@@ -92,12 +94,8 @@
 
     </div>
 
+
 </div>
 
-
-
 <app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!" [person]="person"></app-hotel-list>
-
-
-
 <app-arrow-up></app-arrow-up>

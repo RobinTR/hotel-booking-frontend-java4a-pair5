@@ -1,31 +1,33 @@
-<div class="room-item shadow rounded overflow-hidden">
+<div class="room-item shadow rounded overflow-hidden size position-relative">
     <div class="position-relative">
         @if (hotelData.hotelImageUrls && hotelData.hotelImageUrls.length > 0) {
-            <img class="img-fluid" [src]="hotelData.hotelImageUrls.at(0)?.url" alt="Hotel Image">
+        <img class="img-fluid" [src]="hotelData.hotelImageUrls.at(0)?.url" alt="Hotel Image">
         } @else {
-            <img class="img-fluid" src="layout-assets/img/room-3.jpg" alt="Default Hotel Image">
+        <img class="img-fluid" src="layout-assets/img/room-3.jpg" alt="Default Hotel Image">
         }
 
-        <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">
+        <small
+            class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">
             {{ minCost }}₺ / Night
         </small>
     </div>
 
     <div class="p-4 mt-2">
-        <div class="d-flex justify-content-between mb-3">
-            <h5 class="mb-0">{{ hotelName }}</h5>
-            <div class="ps-2">
+        <div class="d-flex justify-content-between mb-3 align-items-center">
+            <h5 class="mb-0 flex-grow-1">{{ hotelName }}</h5>
+            <div class="ps-2 d-flex align-items-center">
                 @for (star of [].constructor(hotelStars); track $index) {
-                <small class="fa fa-star text-primary"></small>
+                <small class="fa fa-star text-primary ms-1"></small>
                 }
             </div>
         </div>
 
         <p class="text-body mb-2 scrollable-text">
-          <span class="truncate-text">{{ hotelDescription }}</span>
-      </p>
-        <div class="d-flex justify-content-center">
-            <a class="btn btn-sm btn-dark rounded py-2 px-4 " (click)="bookNow()">Book Now</a>
-        </div>
+            <span class="truncate-text">{{ hotelDescription }}</span>
+        </p>
+        
+    </div>
+    <div class="book-now-container">
+        <a class="btn btn-sm btn-dark rounded py-2 px-4 " (click)="bookNow()">Book Now</a>
     </div>
 </div>
