@@ -10,8 +10,10 @@ import { PrivacyPolicyComponent } from './shared/components/footer/company/priva
 import { SssComponent } from './features/SSS/sss/sss.component';
 import { ContactComponent } from './features/contact/component/contact/contact.component';
 import { securedRouteGuard } from './core/auth/guards/secured-route.guard';
-import { UserProfileComponent } from './features/user-profile/user-profile.component';
 import { AuthRoles } from './core/auth/constants/auth-roles';
+import { UserProfileComponent } from './features/user-profile/components/user-profile/user-profile.component';
+import { PaymentByCardComponent } from './features/user-profile/components/payment-by-card/payment-by-card.component';
+import { PasswordComponent } from './features/user-profile/components/password/password.component';
 
 export const routes: Routes = [
   {
@@ -57,8 +59,29 @@ export const routes: Routes = [
           },
         },
         canActivate: [securedRouteGuard],
-        component: UserProfileComponent
-      }
+        component: UserProfileComponent,
+       
+      } ,
+      {
+          path:"payment-by-card",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.USER],
+            },
+          },
+          canActivate: [securedRouteGuard],
+          component:PaymentByCardComponent
+        },
+        {
+          path:"password",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.USER],
+            },
+          },
+          canActivate: [securedRouteGuard],
+          component:PasswordComponent
+        }
     ]
   },
   {
