@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../features/login/services/auth.service';
+import { NavbarUserProfileComponent } from './navbar-user-profile/navbar-user-profile.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, NavbarUserProfileComponent],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

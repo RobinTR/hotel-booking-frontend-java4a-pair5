@@ -40,7 +40,7 @@ export const routes: Routes = [
         loadComponent: () => import('./features/hotel-details/components/hotel-details/hotel-details.component').then(hd => hd.HotelDetailsComponent)
       },
       {
-        path: "privacypolicy",
+        path: "privacy-policy",
         component: PrivacyPolicyComponent
       },
       {
