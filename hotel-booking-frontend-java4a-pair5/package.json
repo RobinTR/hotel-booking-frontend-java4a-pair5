@@ -23,6 +23,7 @@
     "@angular/platform-server": "^18.0.0",
     "@angular/router": "^18.0.0",
     "@angular/ssr": "^18.0.4",
+    "@iconify/json": "^2.2.224",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",

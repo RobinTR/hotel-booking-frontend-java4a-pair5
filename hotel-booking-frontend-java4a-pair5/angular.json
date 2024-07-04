@@ -47,7 +47,8 @@
               "public/layout-assets/lib/tempusdominus/js/moment.min.js",
               "public/layout-assets/lib/tempusdominus/js/moment-timezone.min.js",
               "public/layout-assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js",
-              "public/layout-assets/js/main.js"
+              "public/layout-assets/js/main.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js"
             ],
             "server": "src/main.server.ts",
             "prerender": true,
