@@ -33,7 +33,7 @@ export class LoginComponent {
     };
     this.authService.login(loginCredentials).subscribe({
       complete: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/user-profile']);
       },
     });
   }

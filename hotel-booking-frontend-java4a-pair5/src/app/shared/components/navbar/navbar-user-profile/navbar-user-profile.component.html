@@ -1,0 +1,14 @@
+@if (isLogged) {
+    <div class="sec-center me-4"> 	
+        <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
+        <label class="for-dropdown rounded-3" for="dropdown">User Panel <img src="icons/down.png" class="ms-1"></label>
+        <div class="section-dropdown">
+            <a class="a-class a-hover" routerLink="/user-profile">Profile Details</a>
+            <a class="a-class a-hover" href="#">Bookings</a>
+            <a class="a-class a-hover" (click)="onLogout()">Logout</a>
+        </div>
+    </div>
+  } @else {
+    <a routerLink="/register" class="btn btn-outline-warning rounded-3 px-2 py-2 m-2">Register</a>
+    <a routerLink="/login" class="btn btn-outline-warning rounded-3 px-2 py-2 m-2">Login</a>
+}

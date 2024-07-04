@@ -1,34 +1,32 @@
 <div class="container-fluid bg-dark px-0">
-  <div class="row gx-0">
-      <div class="col-lg-3 bg-dark d-none d-lg-block">
-          <a href="#" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center custom-navbar-brand">
-              <h1 class="m-0 text-warning text-uppercase float-animation">Booking</h1>
-          </a>
-      </div>
-      <div class="col-lg-9">
+    <div class="row gx-0">
+        <div class="col-lg-3 bg-dark d-none d-lg-block">
+            <a href="#"
+                class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center custom-navbar-brand">
+                <h1 class="m-0 text-warning text-uppercase float-animation">Booking</h1>
+            </a>
+        </div>
+        <div class="col-lg-9">
 
-          <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
-              <a href="#" class="navbar-brand d-block d-lg-none">
-                  <h1 class="m-0 text-primary-custom text-uppercase float-animation">Booking</h1>
-              </a>
-              <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse justify-content" id="navbarCollapse">
-                  <div class="navbar-nav py-0 custom-nav">
-                      <a routerLink="" class="nav-item nav-link active">Home</a>
-                      <a routerLink="/about" class="nav-item nav-link">About</a>
-                      <a routerLink="contact" class="nav-item nav-link">Contact</a>
-                      <a routerLink="sss" class="nav-item nav-link">SSS</a>
+            <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
+                <a href="#" class="navbar-brand d-block d-lg-none">
+                    <h1 class="m-0 text-primary-custom text-uppercase float-animation">Booking</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content" id="navbarCollapse">
+                    <div class="navbar-nav py-0 custom-nav">
+                        <a routerLink="" class="nav-item nav-link active">Home</a>
+                        <a routerLink="/about" class="nav-item nav-link">About</a>
+                        <a routerLink="contact" class="nav-item nav-link">Contact</a>
+                        <a routerLink="sss" class="nav-item nav-link">SSS</a>
+                    </div>
+                </div>
 
+                <app-navbar-user-profile [isLogged]="isLogged"></app-navbar-user-profile>
 
-
-
-                  </div>
-              </div>
-              <a routerLink="register" class="btn btn-outline-warning rounded-3 px-2 py-2 m-2">Register</a>
-              <a routerLink="login" class="btn btn-outline-warning rounded-3 px-2 py-2 m-2">Login</a>
-          </nav>
-      </div>
-  </div>
+            </nav>
+        </div>
+    </div>
 </div>

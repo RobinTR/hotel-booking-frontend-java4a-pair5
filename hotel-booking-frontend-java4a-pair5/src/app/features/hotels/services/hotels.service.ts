@@ -61,11 +61,12 @@ export class HotelsService {
         })
       );
   }
-  searchByDate(startDate: string,endDate:string): Observable<PaginatedList<Hotel>> {
-    const queryParams = { startDate,endDate };
-
-
-    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchByDate`, { params : queryParams })
+  searchByDate(startDate: string, endDate:string): Observable<PaginatedList<Hotel>> {
+    let queryParams: any = {};
+    queryParams.startDate = startDate;
+    queryParams.endDate = endDate;
+  
+    return this._http.get<{ success: boolean; message: string; data: Hotel[] }>(`${this.apiControllerUrl}/searchAllHotelsWithFilters`, { params: queryParams })
       .pipe(
         map((response) => {
           const paginatedList: PaginatedList<Hotel> = {

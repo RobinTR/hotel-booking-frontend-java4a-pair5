@@ -50,7 +50,7 @@ export class AuthService {
     if (!this.token) return false;
 
     const nowUnixTimeInMilliseconds = Date.now();
-    const nowUnitTimeInSeconds = Math.floor(nowUnixTimeInMilliseconds / 1000);
+    const nowUnitTimeInSeconds = Math.floor(nowUnixTimeInMilliseconds / 500);
 
     if (nowUnitTimeInSeconds > this.tokenPayload!.exp) {
       this.logout();

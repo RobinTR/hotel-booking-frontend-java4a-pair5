@@ -65,7 +65,7 @@ export class HomepageComponent implements OnInit {
     setTimeout(() => {
       this.isOldUser = isOldUser;
       this.change.markForCheck();
-    }, 5000);
+    }, 1000);
   }
 
 }
