@@ -1,69 +1,46 @@
-
-
-<div class="container-xl px-4 mt-4">
+<div class="container-xl px-4 mt-4 mb-4">
+    <!-- Navigation -->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="user-profile" target="__blank">Profile</a>
-        <a class="nav-link" routerLink="/payment-by-card" target="__blank">Billing</a>
-        <a class="nav-link"routerLink="/password" target="__blank">Security</a>
+        <a class="nav-link active ms-0" href="user-profile" target="_blank">Profile</a>
+        <a class="nav-link" routerLink="/payment-by-card" target="_blank">Payment By Card</a>
+        <a class="nav-link" routerLink="/password" target="_blank">Security</a>
     </nav>
-    <hr class="mt-0 mb-4">
-    <div class="row">
-        <div class="col-lg-4 mb-4">
-           
-    <!-- Payment methods card-->
-    <div class="card card-header-actions mb-4">
-        <div class="card-header">
-            Payment Methods
-            <button class="btn btn-sm btn-primary" type="button">Add Payment Method</button>
-        </div>
-        <div class="card-body px-0">
-            <!-- Payment method 1-->
-            <div class="d-flex align-items-center justify-content-between px-4">
-                <div class="d-flex align-items-center">
-                     <i class="fab fa-cc-visa fa-2x cc-color-visa"></i>
-                    <div class="ms-4">
-                        <div class="small">Visa ending in 1234</div>
-                        <div class="text-xs text-muted">Expires 04/2024</div>
-                    </div>
-                </div>
-                <div class="ms-4 small">
-                    <div class="badge bg-light text-dark me-3">Default</div>
-                    <a href="#!">Edit</a>
-                </div>
-            </div>
-            <hr>
-            <!-- Payment method 2-->
-            <div class="d-flex align-items-center justify-content-between px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fab fa-cc-mastercard fa-2x cc-color-mastercard"></i>
-                    <div class="ms-4">
-                        <div class="small">Mastercard ending in 5678</div>
-                        <div class="text-xs text-muted">Expires 05/2022</div>
-                    </div>
-                </div>
-                <div class="ms-4 small">
-                    <a class="text-muted me-3" href="#!">Make Default</a>
-                    <a href="#!">Edit</a>
-                </div>
-            </div>
-            <hr>
-            <!-- Payment method 3-->
-            <div class="d-flex align-items-center justify-content-between px-4">
-                <div class="d-flex align-items-center">
-                    <i class="fab fa-cc-amex fa-2x cc-color-amex"></i>
-                    <div class="ms-4">
-                        <div class="small">American Express ending in 9012</div>
-                        <div class="text-xs text-muted">Expires 01/2026</div>
-                    </div>
-                </div>
-                <div class="ms-4 small">
-                    <a class="text-muted me-3" href="#!">Make Default</a>
-                    <a href="#!">Edit</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
+    <hr class="mt-0 mb-4">
+
+    <div class="row">
+        <!-- Payment Information Column -->
+        <div class="col-lg-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title text-center mb-4 bold">Payment Information</h2>
+                    <form action="/process-payment" method="POST">
+                        <!-- Card Number -->
+                        <div class="form-group mb-3">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
+                        </div>
+                        <!-- Expiration Date -->
+                        <div class="form-row mb-3">
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="expirationMonth">Expiration Month</label>
+                                <input type="text" class="form-control" id="expirationMonth" name="expirationMonth" placeholder="MM" required>
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="expirationYear">Expiration Year</label>
+                                <input type="text" class="form-control" id="expirationYear" name="expirationYear" placeholder="YY" required>
+                            </div>
+                        </div>
+                        <!-- CVV -->
+                        <div class="form-group mb-3">
+                            <label for="cvv">CVV</label>
+                            <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" required>
+                        </div>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary btn-block mt-3">Submit Payment</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
