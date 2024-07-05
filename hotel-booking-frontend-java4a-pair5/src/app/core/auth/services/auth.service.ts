@@ -14,6 +14,14 @@ export class AuthService {
 
   constructor(@Inject(DOCUMENT) protected document: Document) { }
 
+  public get userId(): number | null {
+    return this.tokenPayload?.userId ?? null;
+  }
+
+  public get guestId(): number | null {
+    return this.tokenPayload?.guestId ?? null;
+  }
+
   public get logged(): Observable<void> {
     return this._logged.asObservable();
   }
@@ -84,6 +92,14 @@ export class AuthService {
 
   public get token(): string | null {
     return this.localStorage?.getItem('accessToken') ?? null;
+  }
+
+  public get tokenWithBearer(): string | null {
+    if (this.localStorage?.getItem('accessToken')) {
+      return 'Bearer ' + this.localStorage?.getItem('accessToken');
+    }
+    
+    return null;
   }
 
   protected set token(token: string) {

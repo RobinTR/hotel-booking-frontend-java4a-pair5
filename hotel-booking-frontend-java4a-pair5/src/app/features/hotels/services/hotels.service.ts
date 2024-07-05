@@ -55,7 +55,6 @@ export class HotelsService {
             pageSize: response.data.length,
             totalCount: response.data.length,
           };
-          console.log(response);
 
           return paginatedList;
         })
@@ -75,7 +74,6 @@ export class HotelsService {
             pageSize: response.data.length,
             totalCount: response.data.length,
           };
-          console.log(response);
 
           return paginatedList;
         })
@@ -94,7 +92,6 @@ export class HotelsService {
             pageSize: response.data.length,
             totalCount: response.data.length,
           };
-          console.log(response);
 
           return paginatedList;
         })
@@ -125,7 +122,7 @@ export class HotelsService {
       .pipe(
         map((response) => {
           let hotel: Hotel[] = response.data;
-          console.log(response);
+
           return hotel.at(0);
         }));
   }
@@ -138,7 +135,7 @@ export class HotelsService {
       .pipe(
         map((response) => {
           let hotel: Hotel = response.data;
-          console.log(response);
+
           return hotel;
         }));
   }

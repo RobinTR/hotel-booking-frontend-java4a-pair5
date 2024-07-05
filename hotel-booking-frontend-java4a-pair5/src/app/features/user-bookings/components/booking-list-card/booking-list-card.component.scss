@@ -1,0 +1,48 @@
+body {
+    margin-top: 20px;
+    background: #483D8B;
+  }
+  
+  .card-body {
+    align-items: center;
+  }
+  
+  .icon-lg {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
+  #btn-cst {
+    background: black;
+    text-align: center;
+    width: auto;
+    padding: 10px 20px;
+    border-radius: 0.75rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  #btn-cst:hover {
+    color: #ffc107;
+  }
+  
+  .card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .desc {
+    color: #fff;
+  }

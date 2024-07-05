@@ -1,11 +1,9 @@
-import { LayoutComponent } from './shared/components/layout/layout.component';
+
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './features/register/components/register/register.component';
 import { LoginComponent } from './features/login/components/login/login.component';
 import { AboutComponent } from './features/about/components/about/about.component';
 import { HomepageComponent } from './features/homepage/components/homepage/homepage.component';
-import { BookingComponent } from './features/booking/components/booking/booking.component';
-import { HotelDetailsComponent } from './features/hotel-details/components/hotel-details/hotel-details.component';
 import { PrivacyPolicyComponent } from './shared/components/footer/company/privacy-policy/privacy-policy.component';
 import { SssComponent } from './features/SSS/sss/sss.component';
 import { ContactComponent } from './features/contact/component/contact/contact.component';
@@ -14,7 +12,9 @@ import { AuthRoles } from './core/auth/constants/auth-roles';
 import { UserProfileComponent } from './features/user-profile/components/user-profile/user-profile.component';
 import { PaymentByCardComponent } from './features/user-profile/components/payment-by-card/payment-by-card.component';
 import { PasswordComponent } from './features/user-profile/components/password/password.component';
-import { BookingListComponent } from './features/booking-list/booking-list.component';
+import { BookingDetailComponent } from './features/user-bookings/components/booking-detail/booking-detail.component';
+import { BookingListComponent } from './features/user-bookings/components/booking-list/booking-list.component';
+import { LayoutComponent } from './shared/components/layout/layout.component';
 
 export const routes: Routes = [
   {
@@ -92,6 +92,16 @@ export const routes: Routes = [
           },
           canActivate: [securedRouteGuard],
           component: BookingListComponent
+        },
+        {
+          path:"booking-detail",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.USER],
+            },
+          },
+          canActivate: [securedRouteGuard],
+          component: BookingDetailComponent
         }
     ]
   },
