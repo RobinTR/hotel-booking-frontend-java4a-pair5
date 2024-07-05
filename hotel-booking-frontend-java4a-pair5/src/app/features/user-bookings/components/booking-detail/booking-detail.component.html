@@ -1,0 +1,57 @@
+<div class="container mt-5 mb-5">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h3>Booking Details</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Hotel Information</h5>
+                    <p><strong>Name:</strong> {{ booking?.hotel?.name }} </p>
+                    <p><strong>Contact:</strong> {{ booking?.hotel?.contactNumber }} </p>
+                    <p><strong>Email:</strong> {{ booking?.hotel?.email }} </p>
+                    <p><strong>Website:</strong> {{ booking?.hotel?.website }} </p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Guest Information</h5>
+                    <div *ngFor="let citizenOfBooking of booking?.citizenOfBookings; let i = index" class="mb-3">
+                        <p><strong>Guest {{ i + 1 }} First Name:</strong> {{ citizenOfBooking.firstName }}</p>
+                        <p><strong>Guest {{ i + 1 }} Last Name:</strong> {{ citizenOfBooking.lastName }}</p>
+                        <p><strong>Birthdate:</strong> {{ citizenOfBooking.birthDate }}</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Booking Details</h5>
+                    <p><strong>Reservation Start Date:</strong> {{ booking?.startDate }} </p>
+                    <p><strong>Reservation End Date:</strong> {{ booking?.endDate }} </p>
+                    <p><strong>Check-In Date:</strong> {{ booking?.checkInDate }} </p>
+                    <p><strong>Check-Out Date:</strong> {{ booking?.checkOutDate }} </p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Payment Information</h5>
+                    <p><strong>Total Cost:</strong> {{ booking?.totalCost }} </p>
+                    <p><strong>Payment Status:</strong> {{ booking?.paymentStatus }} </p>
+                    <p><strong>Reservation Status:</strong> {{ booking?.reservationStatus }} </p>
+                    <p><strong>Payment Method:</strong> {{ booking?.paymentMethod?.name }} </p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <h5>Room(s) Booked</h5>
+                    <ul class="list-group">
+                        @for (roomBooked of booking?.roomBooked; track $index) {
+                            <li class="list-group-item">
+                                <p><strong>Room Number:</strong> {{ roomBooked.room.number }}</p>
+                                <p><strong>Room Cost:</strong> {{ roomBooked.room.cost }}</p>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

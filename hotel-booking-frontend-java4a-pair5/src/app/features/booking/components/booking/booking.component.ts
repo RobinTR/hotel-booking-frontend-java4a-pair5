@@ -7,6 +7,8 @@ import { FormArray, FormBuilder, FormGroup, Validators, FormGroupName, ReactiveF
 import { Booking } from '../../models/booking';
 import { Citizen } from '../../models/citizen';
 import { BookingService } from '../../services/booking.service';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../../core/auth/services/auth.service';
 
 @Component({
   selector: 'app-booking',
@@ -20,12 +22,12 @@ export class BookingComponent implements OnInit {
   bookingRoom?: Room;
   bookingForm: FormGroup;
 
-  constructor(private bookingService: BookingService, private hotelDetailsService: HotelDetailsService, private fb: FormBuilder) {
+  constructor(private bookingService: BookingService, private hotelDetailsService: HotelDetailsService, private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.bookingForm = this.fb.group({
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      checkIn: [{value: '', disabled: true}],
-      checkOut: [{value: '', disabled: true}],
+      checkIn: [{ value: '', disabled: true }],
+      checkOut: [{ value: '', disabled: true }],
       numberOfPeople: [1, Validators.required],
       people: this.fb.array([])
     });
@@ -41,10 +43,6 @@ export class BookingComponent implements OnInit {
       checkIn: this.hotelDetailsService.checkIn,
       checkOut: this.hotelDetailsService.checkOut
     });
-    console.log(this.hotelDetailsService.checkIn);
-
-    console.log(JSON.stringify(this.bookingRoom));
-    console.log(JSON.stringify(this.bookingHotel?.id));
   }
 
   get people(): FormArray {
@@ -77,6 +75,8 @@ export class BookingComponent implements OnInit {
     }
 
     const formValues = this.bookingForm.value;
+    this.authService.guestId;
+    console.log(this.authService.guestId);
 
     const citizens: Citizen[] = formValues.people.map((person: any) => ({
       firstName: person.firstName,
@@ -84,12 +84,9 @@ export class BookingComponent implements OnInit {
       birthDate: person.birthDate
     }));
 
-    console.log(this.hotelDetailsService.checkIn);
-    console.log(this.hotelDetailsService.checkOut);
-
     const booking: Booking = {
       hotelId: this.bookingHotel?.id || 0,
-      guestId: 1, 
+      guestId: this.authService.guestId!,
       citizens: citizens,
       roomIds: [this.bookingRoom?.id || 0],
       paymentMethodId: 1,
@@ -97,37 +94,28 @@ export class BookingComponent implements OnInit {
       endDate: this.getLocalDateOfString(this.hotelDetailsService.checkOut as string)
     };
 
-    console.log(booking);
-    console.log(JSON.stringify(booking));
-
     this.bookingService.makeReservation(booking).subscribe(
       (response: Booking) => {
-        console.log('Booking successful', response);
-        console.log(JSON.stringify(response));
+        this.router.navigateByUrl('/user-bookings');
       },
       (error: any) => {
         console.error('Booking error', error);
         console.log(JSON.stringify(error));
       }
     );
-
-    console.log(this.bookingForm.value);
   }
 
   getLocalDateOfString(date: string): string {
-    // Tarih değerinin geçerli olup olmadığını kontrol et
     if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
       throw new Error('Invalid date format. Expected format: YYYY-MM-DD');
     }
-  
-    // Tarih değerini al ve geçerli olup olmadığını kontrol et
+
     const stringDate = new Date(date);
-  
+
     if (isNaN(stringDate.getTime())) {
       throw new Error('Invalid date value');
     }
-  
-    // Tarih formatını 'YYYY-MM-DD' olarak döndür
+
     return stringDate.toISOString().substring(0, 10);
   }
 }

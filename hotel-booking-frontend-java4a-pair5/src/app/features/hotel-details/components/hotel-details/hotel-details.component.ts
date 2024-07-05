@@ -19,6 +19,7 @@ import { HotelDetailsListComponent } from '../hotel-details-list/hotel-details-l
 })
 export class HotelDetailsComponent implements OnInit {
   selectedHotel?: Hotel | null;
+  selectedHotelId: number | undefined;
   filterForm: FormGroup;
   previousFormValues: any;
   location?: String;
@@ -38,6 +39,7 @@ export class HotelDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.selectedHotel = this.hotelsService.selectedHotel;
+    this.selectedHotelId = this.hotelsService.selectedHotel?.id;
   }
 
   onFilterFormSubmit() {
@@ -47,7 +49,7 @@ export class HotelDetailsComponent implements OnInit {
 
     if (JSON.stringify(this.previousFormValues) !== JSON.stringify(currentFormValues)) {
       this.hotelsService.searchByRoomFilters(
-        this.selectedHotel!.id,
+        this.selectedHotelId!,
         this.filterForm.value.checkIn,
         this.filterForm.value.checkOut,
         this.filterForm.value.roomCapacity
@@ -55,7 +57,10 @@ export class HotelDetailsComponent implements OnInit {
         (hotel: Hotel | undefined) => {
           this.hotelsService.selectedHotel = hotel!;
           this.selectedHotel = hotel;
-          console.log(this.filterForm.value.checkIn);
+          console.log(this.hotelsService.selectedHotel + " hotelService hotel");
+          console.log(this.selectedHotel + " selectedHotel hotel");
+          console.log(JSON.stringify(this.hotelsService.selectedHotel) + " hotelService hotel");
+          console.log(JSON.stringify(this.selectedHotel) + " selectedHotel hotel");
         },
         (error) => {
           console.error('Error fetching hotel:', error);

@@ -80,10 +80,8 @@ export class HotelDetailsListComponent implements AfterViewInit, OnChanges {
   }
 
   private setupCarouselIndicators() {
-    // carousel-indicators içindeki önceki düğmeleri temizle
     this.renderer.setProperty(this.carouselIndicators?.nativeElement, 'innerHTML', '');
 
-    // hotelImageUrls üzerinde döngü yaparak düğmeleri oluştur
     this.selectedHotel?.hotelImageUrls.forEach((imageUrl, index) => {
       const button = this.renderer.createElement('button');
       this.renderer.setAttribute(button, 'type', 'button');

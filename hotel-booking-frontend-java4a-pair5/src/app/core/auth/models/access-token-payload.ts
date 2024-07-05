@@ -5,6 +5,7 @@ export interface AccessTokenPayload {
     iat: number;
     exp: number;
     userId: number;
+    guestId: number;
     roles: AuthRoles[];
   }
   
