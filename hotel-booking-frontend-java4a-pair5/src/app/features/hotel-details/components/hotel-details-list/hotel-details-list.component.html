@@ -1,19 +1,37 @@
-<div id="carouselExampleIndicators" class="carousel slide container small-carousel">
-  <div class="carousel-indicators" #carouselIndicators>
+<style>
+  .carousel-item img {
+    width: 100%;
+    height: 400px; /* İstediğiniz yükseklik değerini buraya yazın */
+    object-fit: cover; /* Resimleri kapsayıcıya sığdırır ve taşmalarını engeller */
+  }
+</style>
 
+<div id="carouselExampleIndicators" class="carousel slide container small-carousel">
+  <div class="carousel-indicators">
+    <button
+      *ngFor="let item of selectedHotel?.hotelImageUrls; let i = index"
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      [attr.data-bs-slide-to]="i"
+      [class.active]="i === 0"
+      [attr.aria-current]="i === 0 ? 'true' : null"
+      [attr.aria-label]="'Slide ' + (i + 1)">
+    </button>
   </div>
   <div class="carousel-inner">
-    @if (selectedHotel?.hotelImageUrls) {
-      @for (item of selectedHotel?.hotelImageUrls; track $index) {
-        <div class="carousel-item active">
-          <img src="{{ item.url }}" class="d-block w-100" alt="...">
-        </div>
-      }
-    }  @else {
-    <div class="carousel-item">
-      <img src="layout-assets/img/room-3.jpg" class="d-block w-100" alt="...">
+    <div *ngIf="selectedHotel?.hotelImageUrls; else noImages">
+      <div
+        *ngFor="let item of selectedHotel?.hotelImageUrls; let i = index"
+        class="carousel-item"
+        [class.active]="i === 0">
+        <img [src]="item.url" class="d-block w-100" alt="...">
+      </div>
     </div>
-    }
+    <ng-template #noImages>
+      <div class="carousel-item active">
+        <img src="layout-assets/img/room-3.jpg" class="d-block w-100" alt="...">
+      </div>
+    </ng-template>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -33,11 +51,14 @@
 <p>{{ selectedHotel?.description }}</p>
 <p><strong>Popular Features</strong></p>
 
-@if (selectedHotel) {
-@for (hf of selectedHotel.hotelFeatures; track $index) {
-<app-hotel-feature [hotelFeature]="hf"></app-hotel-feature>
-}
-}
+<div *ngIf="selectedHotel">
+  <app-hotel-feature
+    *ngFor="let hf of selectedHotel.hotelFeatures"
+    [hotelFeature]="hf">
+  </app-hotel-feature>
+</div>
+
+
 
 <div class="container">
   <h2 class="mb-4">Available Rooms</h2>
