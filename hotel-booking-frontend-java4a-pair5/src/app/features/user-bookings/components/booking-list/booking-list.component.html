@@ -1,3 +1,14 @@
-@for (booking of bookings; track $index) {
-    <app-booking-list-card [booking]="booking"></app-booking-list-card>
+@if (bookings) {
+
+    @for (booking of bookings; track $index) {
+        <app-booking-list-card [booking]="booking"></app-booking-list-card>
+    }   
+} @else {
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 text-center">
+            <h1 class="mt-5">No reservation has been made.</h1>
+        </div>
+    </div>
+</div>
 }

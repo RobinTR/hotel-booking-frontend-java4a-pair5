@@ -89,14 +89,14 @@ export class BookingComponent implements OnInit {
       guestId: this.authService.guestId!,
       citizens: citizens,
       roomIds: [this.bookingRoom?.id || 0],
-      paymentMethodId: 1,
+      paymentMethodId: 2,
       startDate: this.getLocalDateOfString(this.hotelDetailsService.checkIn as string),
       endDate: this.getLocalDateOfString(this.hotelDetailsService.checkOut as string)
     };
 
     this.bookingService.makeReservation(booking).subscribe(
       (response: Booking) => {
-        this.router.navigateByUrl('/user-bookings');
+        this.router.navigateByUrl('/booking-list');
       },
       (error: any) => {
         console.error('Booking error', error);
