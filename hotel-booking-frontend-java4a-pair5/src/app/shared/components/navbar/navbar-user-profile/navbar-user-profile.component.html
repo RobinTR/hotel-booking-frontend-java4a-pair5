@@ -1,14 +1,31 @@
-@if (isLogged) {
-    <div class="sec-center me-4"> 	
-        <input class="dropdown" type="checkbox" id="dropdown" name="dropdown"/>
-        <label class="for-dropdown rounded-3" for="dropdown">User Panel <img src="icons/down.png" class="ms-1"></label>
+<div *ngIf="isLogged">
+    <div class="d-flex align-items-center">
+      <div *ngIf="isManager" class="sec-center me-4">
+        <input class="dropdown" type="checkbox" id="dropdown" name="dropdown" />
+        <label class="for-dropdown rounded-3" for="dropdown">Manager Panel 
+          <img src="icons/down.png" class="ms-1">
+        </label>
         <div class="section-dropdown">
-            <a class="a-class a-hover" routerLink="/user-profile">Profile Details</a>
-            <a class="a-class a-hover" routerLink="/booking-list">Bookings</a>
-            <a class="a-class a-hover" (click)="onLogout()">Logout</a>
+          <a class="a-class a-hover" routerLink="/hotel-add">Hotel Add Form</a>
+          <a class="a-class a-hover" routerLink="/booking-list">Hotel - Room Management</a>
+          <a class="a-class a-hover" routerLink="/user-profile">Reservation Management</a>
         </div>
+      </div>
+      <div class="sec-center me-4">
+        <input class="dropdown" type="checkbox" id="user-dropdown" name="user-dropdown" />
+        <label class="for-dropdown rounded-3" for="user-dropdown">User Panel 
+          <img src="icons/down.png" class="ms-1">
+        </label>
+        <div class="section-dropdown">
+          <a class="a-class a-hover" routerLink="/user-profile">Profile Details</a>
+          <a class="a-class a-hover" routerLink="/booking-list">Bookings</a>
+          <a class="a-class a-hover" (click)="onLogout()">Logout</a>
+        </div>
+      </div>
     </div>
-  } @else {
+  </div>
+  <div *ngIf="!isLogged">
     <a routerLink="/register" class="btn btn-outline-warning rounded-3 px-2 py-2 m-2">Register</a>
     <a routerLink="/login" class="btn btn-outline-warning rounded-3 px-2 py-2 m-2">Login</a>
-}
+  </div>
+  

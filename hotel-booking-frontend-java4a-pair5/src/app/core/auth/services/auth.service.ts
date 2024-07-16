@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { AccessTokenPayload } from '../models/access-token-payload';
+import { AccessTokenPayload, Role } from '../models/access-token-payload';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 import { AuthRoles } from '../constants/auth-roles';
@@ -20,6 +20,14 @@ export class AuthService {
 
   public get guestId(): number | null {
     return this.tokenPayload?.guestId ?? null;
+  }
+
+  public get managerId(): number | null {
+    return this.tokenPayload?.managerId ?? null;
+  }
+
+  public get roles(): AuthRoles[] | null {
+    return this.tokenPayload?.roles ?? null;
   }
 
   public get logged(): Observable<void> {
