@@ -1,0 +1,68 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8 mb-5">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="text-center">Add New Hotel</h3>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="addressName">Address Name</label>
+                <input type="text" id="addressName" formControlName="fullAddress" class="form-control" placeholder="Enter address name" />
+              </div>
+              <div class="form-group">
+                <label for="name">Hotel Name</label>
+                <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter hotel name" />
+              </div>
+              <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="text" id="contactNumber" formControlName="contactNumber" class="form-control" placeholder="Enter contact number" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter email" />
+              </div>
+              <div class="form-group">
+                <label for="website">Website</label>
+                <input type="text" id="website" formControlName="website" class="form-control" placeholder="Enter website" />
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" formControlName="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="floorCount">Floor Count</label>
+                <input type="number" id="floorCount" min="1" formControlName="floorCount" class="form-control" placeholder="Enter floor count" />
+              </div>
+              <div class="form-group">
+                <label for="starRating">Star Rating</label>
+                <input type="number" min="1" max="5" id="starRating" formControlName="starRating" class="form-control" placeholder="Enter star rating" />
+              </div>
+              <div class="submit-btn-container">
+              <button type="submit" class="btn btn-primary btn-block mt-2 w-25">Submit</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="successModalLabel">Success</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Hotel has been added successfully!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

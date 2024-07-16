@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AuthService } from '../../../features/login/services/auth.service';
 import { NavbarUserProfileComponent } from './navbar-user-profile/navbar-user-profile.component';
+import { AuthRoles } from '../../../core/auth/constants/auth-roles';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ import { NavbarUserProfileComponent } from './navbar-user-profile/navbar-user-pr
 })
 export class NavbarComponent implements OnInit {
   isLogged: boolean = false;
+  roles?: AuthRoles[] | null;
 
   constructor(private authService: AuthService, private change: ChangeDetectorRef) { }
 
@@ -24,6 +26,7 @@ export class NavbarComponent implements OnInit {
 
   private setLoggedState(isLogged: boolean): void {
     this.isLogged = isLogged;
+    this.roles = this.authService.roles;
     this.change.markForCheck();
   }
 }

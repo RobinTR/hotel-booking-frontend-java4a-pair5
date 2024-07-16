@@ -1,0 +1,14 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Manager's Hotels</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card mb-3 shadow-sm" *ngFor="let hotel of managerHotels">
+        <div class="card-body">
+          <h5 class="card-title font-weight-bold"><strong>Hotel:</strong> {{ hotel.name }}</h5>
+          <p class="card-text text-muted">{{ hotel.description }}</p>
+          <a [routerLink]="['/hotel-details', hotel.id]" class="btn btn-warning btn-lg">View Hotel Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,8 @@ import { PasswordComponent } from './features/user-profile/components/password/p
 import { BookingDetailComponent } from './features/user-bookings/components/booking-detail/booking-detail.component';
 import { BookingListComponent } from './features/user-bookings/components/booking-list/booking-list.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
+import { HotelAddFormComponent } from './features/manager-panel/components/hotel-add-form/hotel-add-form.component';
+import { ManagerHotelListComponent } from './features/manager-panel/components/manager-hotel-list/manager-hotel-list.component';
 
 export const routes: Routes = [
   {
@@ -102,7 +104,15 @@ export const routes: Routes = [
           },
           canActivate: [securedRouteGuard],
           component: BookingDetailComponent
-        }
+        },
+        {
+          path: "hotel-add",
+          component: HotelAddFormComponent,
+        },
+        {
+          path: "manager-hotel-list",
+          component: ManagerHotelListComponent
+        },
     ]
   },
   {
