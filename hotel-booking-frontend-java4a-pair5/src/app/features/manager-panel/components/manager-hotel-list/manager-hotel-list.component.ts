@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hotel } from '../../../hotels/models/hotel';
 import { CommonModule } from '@angular/common';
-import { ManagerService } from '../services/manager.service';
+import { ManagerService } from '../../services/manager.service';
 import { AuthService } from '../../../../core/auth/services/auth.service';
 import { RouterModule } from '@angular/router';
 
@@ -34,8 +34,7 @@ export class ManagerHotelListComponent implements OnInit {
       .subscribe({
         next: (managerHotels) => {
           this.managerHotels = managerHotels;
-          console.log(managerHotels);
-          console.log(JSON.stringify(managerHotels));
+          this.managerService.currentHotel = managerHotels;
         },
         error: (error) => {
           console.error('There was an error searching hotels by !', error);

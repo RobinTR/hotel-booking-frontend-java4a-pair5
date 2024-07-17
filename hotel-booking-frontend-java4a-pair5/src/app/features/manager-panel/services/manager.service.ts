@@ -1,15 +1,18 @@
 import { Injectable } from "@angular/core";
-import { environment } from "../../../../../environments/environment.development";
-import { AddHotel } from "../../models/add-hotel";
+import { environment } from "../../../../environments/environment.development";
+import { AddHotel } from "../models/add-hotel";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { AuthService } from "../../../../core/auth/services/auth.service";
+import { AuthService } from "../../../core/auth/services/auth.service";
 import { map, Observable } from "rxjs";
-import { Hotel } from "../../../hotels/models/hotel";
+import { Hotel } from "../../hotels/models/hotel";
+import { Room } from "../../room/models/room";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ManagerService {
+  currentHotel?: Hotel[];
+  selectedRoom?: Room;
   private apiControllerUrl = `${environment.apiUrl}/api/hotels`;
   token = this.authService.tokenWithBearer;
 

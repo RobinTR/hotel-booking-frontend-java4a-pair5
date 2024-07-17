@@ -17,6 +17,8 @@ import { BookingListComponent } from './features/user-bookings/components/bookin
 import { LayoutComponent } from './shared/components/layout/layout.component';
 import { HotelAddFormComponent } from './features/manager-panel/components/hotel-add-form/hotel-add-form.component';
 import { ManagerHotelListComponent } from './features/manager-panel/components/manager-hotel-list/manager-hotel-list.component';
+import { ManagerHotelDetailsComponent } from './features/manager-panel/components/manager-hotel-details/manager-hotel-details.component';
+import { ManagerHotelRoomDetailComponent } from './features/manager-panel/components/manager-hotel-room-detail/manager-hotel-room-detail.component';
 
 export const routes: Routes = [
   {
@@ -113,6 +115,14 @@ export const routes: Routes = [
           path: "manager-hotel-list",
           component: ManagerHotelListComponent
         },
+        {
+          path: "manager-hotel-room-list",
+          component: ManagerHotelDetailsComponent
+        },
+        {
+          path: "manager-hotel-room-detail",
+          component: ManagerHotelRoomDetailComponent
+        }
     ]
   },
   {

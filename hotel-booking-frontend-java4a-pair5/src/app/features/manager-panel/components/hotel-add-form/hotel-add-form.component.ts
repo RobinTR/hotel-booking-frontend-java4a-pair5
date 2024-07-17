@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Hotel } from '../../../hotels/models/hotel';
 import { CommonModule } from '@angular/common';
-import { ManagerService } from '../services/manager.service';
+import { ManagerService } from '../../services/manager.service';
 import { AddHotel } from '../../models/add-hotel';
 import { Router, RouterModule } from '@angular/router';
 
