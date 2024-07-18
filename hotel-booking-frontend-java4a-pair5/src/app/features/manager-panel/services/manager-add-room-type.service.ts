@@ -23,8 +23,6 @@ export class ManagerAddRoomTypeService {
       'Content-Type': 'application/json'
     });
 
-    //return this._http.post<ManagerRoomType>(this.apiControllerUrl, addRoomType, { headers });
-
     return this._http.post<{ success: boolean; message: string; data: ManagerRoomType}>(this.apiControllerUrl,addRoomType, { headers })
     .pipe(
       map((response) => {

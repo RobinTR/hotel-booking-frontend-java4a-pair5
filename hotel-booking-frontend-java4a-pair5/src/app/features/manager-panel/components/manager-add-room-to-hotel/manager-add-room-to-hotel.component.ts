@@ -40,8 +40,6 @@ export class ManagerAddRoomToHotelComponent {
     });
 
     if (this.addRoomForm.valid) {
-      let addedRoomType: ManagerRoomType;
-
       let roomTypeToAdd: ManagerAddRoomType = {
         name: this.addRoomForm.value.name,
         description: this.addRoomForm.value.description,
@@ -56,6 +54,9 @@ export class ManagerAddRoomToHotelComponent {
             number: this.addRoomForm.value.number,
             hotelId: this.managerService.selectedHotel?.id
           };
+
+          console.log(roomToAdd.cost);
+          console.log(roomToAdd.number);
           return this.addRoomService.add(roomToAdd);
         })
       ).subscribe(
@@ -63,13 +64,12 @@ export class ManagerAddRoomToHotelComponent {
           console.log("Room Added.");
           const successModal = new bootstrap.Modal(document.getElementById('successModal'));
           successModal.show();
+          this.addRoomForm.reset();
         },
         (error: any) => {
           console.error('Manager Room Update error', error);
         }
       );
-
-      this.addRoomForm.reset();
     } else {
       console.log('Form is not valid');
     }
