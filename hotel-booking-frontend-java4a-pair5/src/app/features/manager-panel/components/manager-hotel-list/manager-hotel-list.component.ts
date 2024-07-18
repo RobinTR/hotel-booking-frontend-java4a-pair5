@@ -29,7 +29,6 @@ export class ManagerHotelListComponent implements OnInit {
   }
 
   searchHotelsByManager() {
-    console.log(this.managerId);
     this.managerService.getHotelsOfManager(this.managerId!)
       .subscribe({
         next: (managerHotels) => {

@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <div *ngFor="let booking of bookings" class="card mb-3">
+        <div class="card-header d-flex justify-content-between align-items-center ">
+            <h5 class="mb-0 text-white">{{ booking.hotel.name }}</h5>
+            <div>
+                <button (click)="approveBooking(booking.id)" class="btn btn-success btn-sm me-2" data-bs-toggle="modal" data-bs-target="#confirmModal">Approve</button>
+                <button (click)="cancelBooking(booking.id)" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cancelModal">Cancel</button>
+            </div>
+        </div>
+        <div class="card-body">
+            <h6 class="card-title"><strong>Reservation Information</strong></h6>
+            <p><strong>Guest:</strong> {{ booking.guest.user.firstName + " " + booking.guest.user.lastName }}</p>
+            <p class="card-text">
+                @for (roomBooked of booking.roomBooked; track $index) {
+                    <strong>Room Number:</strong> {{ roomBooked.room.number + ", " }}<br>
+                }
+                <strong>Check-in Date:</strong> {{ booking.startDate }}<br>
+                <strong>Check-out Date:</strong> {{ booking.endDate }}<br>
+                <strong>Total Cost:</strong> {{ booking.totalCost }}<br>
+                <strong>Reservation Status:</strong> {{ booking.reservationStatus }}
+            </p>
+        </div>
+    </div>
+</div>
+
+<app-confirm-modal (confirm)="onConfirm()" (cancel)="onCancel()"></app-confirm-modal>
+<app-cancel-modal (abort)="onAbort()" (cancel)="onCancel()"></app-cancel-modal>

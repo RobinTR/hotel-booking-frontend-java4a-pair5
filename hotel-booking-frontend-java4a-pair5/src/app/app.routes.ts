@@ -15,10 +15,12 @@ import { PasswordComponent } from './features/user-profile/components/password/p
 import { BookingDetailComponent } from './features/user-bookings/components/booking-detail/booking-detail.component';
 import { BookingListComponent } from './features/user-bookings/components/booking-list/booking-list.component';
 import { LayoutComponent } from './shared/components/layout/layout.component';
-import { HotelAddFormComponent } from './features/manager-panel/components/hotel-add-form/hotel-add-form.component';
 import { ManagerHotelListComponent } from './features/manager-panel/components/manager-hotel-list/manager-hotel-list.component';
 import { ManagerHotelDetailsComponent } from './features/manager-panel/components/manager-hotel-details/manager-hotel-details.component';
 import { ManagerHotelRoomDetailComponent } from './features/manager-panel/components/manager-hotel-room-detail/manager-hotel-room-detail.component';
+import { ManagerAddRoomToHotelComponent } from './features/manager-panel/components/manager-add-room-to-hotel/manager-add-room-to-hotel.component';
+import { ManagerBookingControlComponent } from './features/manager-panel/components/manager-booking-control/manager-booking-control.component';
+import { HotelAddFormComponent } from './features/manager-panel/components/manager-add-hotel/manager-add-hotel.component';
 
 export const routes: Routes = [
   {
@@ -108,7 +110,7 @@ export const routes: Routes = [
           component: BookingDetailComponent
         },
         {
-          path: "hotel-add",
+          path: "manager-add-hotel",
           component: HotelAddFormComponent,
         },
         {
@@ -122,6 +124,14 @@ export const routes: Routes = [
         {
           path: "manager-hotel-room-detail",
           component: ManagerHotelRoomDetailComponent
+        },
+        {
+          path: "manager-add-room-to-hotel",
+          component: ManagerAddRoomToHotelComponent
+        },
+        {
+          path: "manager-booking-control",
+          component: ManagerBookingControlComponent
         }
     ]
   },

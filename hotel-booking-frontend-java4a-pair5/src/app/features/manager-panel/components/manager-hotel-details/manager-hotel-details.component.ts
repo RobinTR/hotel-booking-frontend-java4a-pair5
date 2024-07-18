@@ -24,8 +24,9 @@ export class ManagerHotelDetailsComponent implements OnInit {
     this.hotels = this.managerService.currentHotel;
   }
 
-  addRoom() {
-    throw new Error('Method not implemented.');
+  addRoom(hotel: Hotel) {
+    this.managerService.selectedHotel = hotel;
+    this.router.navigate(["/manager-add-room-to-hotel"]);
   }
 
   roomDetailClick(room: Room) {

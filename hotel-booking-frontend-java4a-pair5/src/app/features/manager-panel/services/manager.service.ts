@@ -12,6 +12,7 @@ import { Room } from "../../room/models/room";
 })
 export class ManagerService {
   currentHotel?: Hotel[];
+  selectedHotel?: Hotel;
   selectedRoom?: Room;
   private apiControllerUrl = `${environment.apiUrl}/api/hotels`;
   token = this.authService.tokenWithBearer;

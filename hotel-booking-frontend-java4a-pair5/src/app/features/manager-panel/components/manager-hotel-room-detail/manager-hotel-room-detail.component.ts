@@ -6,11 +6,14 @@ import { ManagerRoomUpdateService } from '../../services/manager-room-update.ser
 import { ManagerRoom } from '../../models/manager-room';
 import { ManagerRoomType } from '../../models/manager-room-type';
 import { ManagerRoomTypeUpdateService } from '../../services/manager-room-type-update.service';
+import { UpdatedModalComponent } from '../../../../shared/components/updated-modal/updated-modal.component';
+
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-manager-hotel-room-detail',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, UpdatedModalComponent],
   templateUrl: './manager-hotel-room-detail.component.html',
   styleUrl: './manager-hotel-room-detail.component.scss'
 })
@@ -81,6 +84,8 @@ export class ManagerHotelRoomDetailComponent implements OnInit {
 
         this.managerRoomTypeUpdateService.update(managerRoomType).subscribe(
           (response: ManagerRoomType) => {
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
             this.refreshPage();
           },
           (error: any) => {
