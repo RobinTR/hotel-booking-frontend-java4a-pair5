@@ -5,15 +5,16 @@ import { CommonModule } from '@angular/common';
 import { ManagerService } from '../../services/manager.service';
 import { AddHotel } from '../../models/add-hotel';
 import { Router, RouterModule } from '@angular/router';
+import { AddedModalComponent } from '../../../../shared/components/added-modal/added-modal.component';
 
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-hotel-add-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterModule],
-  templateUrl: './hotel-add-form.component.html',
-  styleUrl: './hotel-add-form.component.scss'
+  imports: [CommonModule, ReactiveFormsModule, RouterModule, AddedModalComponent],
+  templateUrl: './manager-add-hotel.component.html',
+  styleUrl: './manager-add-hotel.component.scss'
 })
 export class HotelAddFormComponent {
   hotelForm: FormGroup;
