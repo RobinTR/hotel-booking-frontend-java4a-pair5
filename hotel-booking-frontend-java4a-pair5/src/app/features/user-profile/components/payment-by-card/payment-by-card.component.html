@@ -1,26 +1,22 @@
 <div class="container-xl px-4 mt-4 mb-4">
-    <!-- Navigation -->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0" href="user-profile" target="_blank">Profile</a>
-        <a class="nav-link" routerLink="/payment-by-card" target="_blank">Payment By Card</a>
+        <a class="nav-link" href="user-profile" target="_blank">Profile</a>
+        <a class="nav-link active ms-0" routerLink="/payment-by-card" target="_blank">Payment By Card</a>
         <a class="nav-link" routerLink="/password" target="_blank">Security</a>
     </nav>
 
     <hr class="mt-0 mb-4">
 
     <div class="row">
-        <!-- Payment Information Column -->
         <div class="col-lg-4">
             <div class="card shadow-sm">
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4 bold">Payment Information</h2>
                     <form action="/process-payment" method="POST">
-                        <!-- Card Number -->
                         <div class="form-group mb-3">
                             <label for="cardNumber">Card Number</label>
                             <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
                         </div>
-                        <!-- Expiration Date -->
                         <div class="form-row mb-3">
                             <div class="form-group col-md-6 mb-3">
                                 <label for="expirationMonth">Expiration Month</label>
@@ -31,12 +27,10 @@
                                 <input type="text" class="form-control" id="expirationYear" name="expirationYear" placeholder="YY" required>
                             </div>
                         </div>
-                        <!-- CVV -->
                         <div class="form-group mb-3">
                             <label for="cvv">CVV</label>
                             <input type="text" class="form-control" id="cvv" name="cvv" placeholder="CVV" required>
                         </div>
-                        <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary btn-block mt-3">Submit Payment</button>
                     </form>
                 </div>

@@ -38,6 +38,11 @@ export const routes: Routes = [
       {
         path: "booking",
         //component: BookingComponent
+        data: {
+          securedRoute: {
+            requiredRole: [AuthRoles.USER],
+          },
+        },
         canActivate: [securedRouteGuard],
         loadComponent: () => import('./features/booking/components/booking/booking.component').then(b => b.BookingComponent)
       },
@@ -67,7 +72,6 @@ export const routes: Routes = [
         },
         canActivate: [securedRouteGuard],
         component: UserProfileComponent,
-       
       },
       {
           path:"payment-by-card",
@@ -111,26 +115,62 @@ export const routes: Routes = [
         },
         {
           path: "manager-add-hotel",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.MANAGER],
+            },
+          },
+          canActivate: [securedRouteGuard],
           component: HotelAddFormComponent,
         },
         {
           path: "manager-hotel-list",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.MANAGER],
+            },
+          },
+          canActivate: [securedRouteGuard],
           component: ManagerHotelListComponent
         },
         {
           path: "manager-hotel-room-list",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.MANAGER],
+            },
+          },
+          canActivate: [securedRouteGuard],
           component: ManagerHotelDetailsComponent
         },
         {
           path: "manager-hotel-room-detail",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.MANAGER],
+            },
+          },
+          canActivate: [securedRouteGuard],
           component: ManagerHotelRoomDetailComponent
         },
         {
           path: "manager-add-room-to-hotel",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.MANAGER],
+            },
+          },
+          canActivate: [securedRouteGuard],
           component: ManagerAddRoomToHotelComponent
         },
         {
           path: "manager-booking-control",
+          data: {
+            securedRoute: {
+              requiredRole: [AuthRoles.MANAGER],
+            },
+          },
+          canActivate: [securedRouteGuard],
           component: ManagerBookingControlComponent
         }
     ]
