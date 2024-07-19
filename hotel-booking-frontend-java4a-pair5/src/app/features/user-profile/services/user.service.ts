@@ -1,34 +1,36 @@
 import { Injectable } from "@angular/core";
-import { catchError, Observable, throwError } from "rxjs";
-import { User } from "../models/user-profile";
+import { catchError, map, Observable, throwError } from "rxjs";
+import { UserResponse } from "../models/user-response";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { environment } from "../../../../environments/environment.development";
+import { AuthService } from "../../../core/auth/services/auth.service";
 
 @Injectable({
     providedIn: 'root'
-  })
-  export class UserService {
+})
+export class UserService {
     private apiControllerUrl = `${environment.apiUrl}/api/v1/auth`;
+    token = this.authService.tokenWithBearer;
 
-  constructor(private http: HttpClient) { }
+    constructor(private _http: HttpClient, private authService: AuthService) { }
 
- 
-  getUserProfile(): Observable<User> {
-    const token = localStorage.getItem('accessToken'); 
+    getUserProfile(): Observable<UserResponse> {
+        let userId = this.authService.userId;
 
-    if (!token) {
-        return throwError('Token not found');
+        if (!this.token) {
+            return throwError('Token not found');
+        }
+
+        let queryParams: any = {};
+        queryParams.userId = userId;
+
+        const headers = new HttpHeaders({
+            'Authorization': `${this.token}`
+        });
+
+        return this._http.get<{ success: boolean; message: string; data: UserResponse }>(`${this.apiControllerUrl}/profile`, { params: queryParams, headers: headers }).pipe(
+            map((response) => {
+                return response.data;
+            }));
     }
-
-    const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-    });
-
-    return this.http.get<User>(`${this.apiControllerUrl}/profile`, { headers }).pipe(
-        catchError(error => {
-            console.error('Error fetching user profile:', error);
-            return throwError('Failed to fetch user profile');
-        })
-    );
-}
 }
