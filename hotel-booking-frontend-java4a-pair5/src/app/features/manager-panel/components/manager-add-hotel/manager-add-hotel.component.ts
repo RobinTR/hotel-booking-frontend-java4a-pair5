@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Hotel } from '../../../hotels/models/hotel';
 import { CommonModule } from '@angular/common';
 import { ManagerService } from '../../services/manager.service';
 import { AddHotel } from '../../models/add-hotel';
@@ -35,7 +34,6 @@ export class HotelAddFormComponent {
   onSubmit() {
     if (this.hotelForm.valid) {
       const newHotel: AddHotel = this.hotelForm.value;
-      console.log('New Hotel:', newHotel);
 
       this.managerService.add(newHotel).subscribe(
         (response: AddHotel) => {
@@ -44,8 +42,7 @@ export class HotelAddFormComponent {
           this.hotelForm.reset();
         },
         (error: any) => {
-          console.error('Booking error', error);
-          console.log(JSON.stringify(error));
+          console.error('Hotel Adding error', error);
         }
       );
       

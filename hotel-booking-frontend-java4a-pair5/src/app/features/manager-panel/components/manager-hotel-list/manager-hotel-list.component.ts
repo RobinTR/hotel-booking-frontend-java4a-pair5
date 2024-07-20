@@ -36,7 +36,7 @@ export class ManagerHotelListComponent implements OnInit {
           this.managerService.currentHotel = managerHotels;
         },
         error: (error) => {
-          console.error('There was an error searching hotels by !', error);
+          console.error('There was an error searching hotels: !', error);
         },
       });
   }

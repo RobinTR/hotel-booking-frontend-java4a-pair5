@@ -67,7 +67,7 @@ export class ManagerAddRoomToHotelComponent {
           this.addRoomForm.reset();
         },
         (error: any) => {
-          console.error('Manager Room Update error', error);
+          console.error('Manager Room Add error', error);
         }
       );
     } else {

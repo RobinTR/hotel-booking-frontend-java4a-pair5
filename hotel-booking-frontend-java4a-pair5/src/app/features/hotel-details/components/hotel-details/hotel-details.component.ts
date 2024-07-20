@@ -70,5 +70,4 @@ export class HotelDetailsComponent implements OnInit {
 
     this.previousFormValues = currentFormValues;
   }
-
 }

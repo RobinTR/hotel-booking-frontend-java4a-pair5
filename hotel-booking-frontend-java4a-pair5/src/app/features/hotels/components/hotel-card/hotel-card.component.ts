@@ -21,7 +21,6 @@ export class HotelCardComponent implements OnInit {
   minCost?: number;
 
   constructor(private hotelsService: HotelsService, private router: Router) {
-
   }
 
   ngOnInit(): void {

@@ -1,27 +1,26 @@
-/* Öneri kutusu stilleri */
 #locationOptions {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    max-height: 200px;
-    overflow-y: auto;
-    z-index: 1000;
-  }
-  
-  /* Giriş alanı genişliği */
-  #locationInput {
-    width: 100%;
-  }
-  .dropdown-menu {
-    border: #0a0909;
-    background-color: orange; /* Dropdown menü arka plan rengi */
-    box-shadow: 0px 8px 16px rgba(244, 237, 237, 0.1); /* Gölgelendirme efekti */
-  }
-  
-  .dropdown-item {
-    color: #333; /* Dropdown öğelerinin metin rengi */
-  }
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
 
-  #overr {
-    --bs-backdrop-zindex: 0;
+#locationInput {
+  width: 100%;
+}
+
+.dropdown-menu {
+  border: #0a0909;
+  background-color: orange;
+  box-shadow: 0px 8px 16px rgba(244, 237, 237, 0.1);
+}
+
+.dropdown-item {
+  color: #333;
+}
+
+#overr {
+  --bs-backdrop-zindex: 0;
 }

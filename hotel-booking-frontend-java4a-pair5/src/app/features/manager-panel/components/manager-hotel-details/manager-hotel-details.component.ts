@@ -33,5 +33,4 @@ export class ManagerHotelDetailsComponent implements OnInit {
     this.managerService.selectedRoom = room;
     this.router.navigate(["/manager-hotel-room-detail"]);
   }
-
 }

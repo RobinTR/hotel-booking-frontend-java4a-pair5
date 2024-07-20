@@ -106,7 +106,7 @@ export class AuthService {
     if (this.localStorage?.getItem('accessToken')) {
       return 'Bearer ' + this.localStorage?.getItem('accessToken');
     }
-    
+
     return null;
   }
 

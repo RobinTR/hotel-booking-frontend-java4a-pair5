@@ -1,5 +1,3 @@
-
-
 <div class="container p-0 mb-5">
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -40,36 +38,31 @@
     </div>
 </div>
 
-
 <div class="container booking pb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
         <div class="bg-white shadow" style="padding: 35px;">
             <form [formGroup]="searchFormGroup" (ngSubmit)="searchHotels();searchByPerson();searchByDate()">
                 <div class="row g-2">
-
                     <div class="col-md-10">
                         <div class="row g-2">
-
                             <div class="col-md-3">
                                 <div class="location" id="location" data-target-input="nearest">
                                     <input type="text" id="locationInput" formControlName="location"
                                         class="form-control  " placeholder="Location" />
-
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="date" id="date1" data-target-input="nearest">
-                                  <input type="date" class="form-control datetimepicker-input" formControlName="startDate"
-                                    placeholder="Check in" />
+                                    <input type="date" class="form-control datetimepicker-input"
+                                        formControlName="startDate" placeholder="Check in" />
                                 </div>
-                              </div>
-
-                              <div class="col-md-3">
+                            </div>
+                            <div class="col-md-3">
                                 <div class="date" id="date2" data-target-input="nearest">
-                                  <input type="date" formControlName="endDate" class="form-control datetimepicker-input"
-                                    placeholder="Check out" />
+                                    <input type="date" formControlName="endDate"
+                                        class="form-control datetimepicker-input" placeholder="Check out" />
                                 </div>
-                              </div>
+                            </div>
                             <div class="col-md-3">
                                 <select class="form-select" formControlName="person">
                                     <option value="" disabled selected hidden>Person </option>
@@ -77,25 +70,19 @@
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                     <option value="4">4</option>
-                                  </select>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button type="submit" class="btn btn-outline-warning w-100 h-95"
-                            >Submit</button>
+                        <button type="submit" class="btn btn-outline-warning w-100 h-95">Submit</button>
                     </div>
                 </div>
             </form>
-
-
-
         </div>
-
     </div>
-
-
 </div>
 
-<app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!" [person]="person"></app-hotel-list>
+<app-hotel-list [location]="location" [startDate]="selectedStartDate!" [endDate]="selectedEndDate!"
+    [person]="person"></app-hotel-list>
 <app-arrow-up></app-arrow-up>
