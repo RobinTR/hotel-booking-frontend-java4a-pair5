@@ -17,12 +17,52 @@
 
 
 
+![Adsız (100 x 50 piksel) (200 x 50 piksel) (2)](https://hackmd.io/_uploads/rJJkHBtdR.png)
+
+
+
+Clone the project
+
+```bash
+  git clone https://link-to-project
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+
+Install required packages
+
+```bash
+  npm install
+```
+
+
+Run the server
+
+```bash
+  npm run start
+```
 
 
 
 ## ![Database Diagram](https://hackmd.io/_uploads/S15_lrKOA.png)
 
 ![Hotel_Booking](https://hackmd.io/_uploads/BycsxBFdA.png)
+
+
+
+![homepage](https://i.ibb.co/ZH5dX2Z/imasssge.png)
+
+![homepage2](https://hackmd.io/_uploads/rkPKUrY_0.png)
+
+
+
+
+
 
 
 ## ![Our Team](https://hackmd.io/_uploads/r1b0lBFu0.png)
@@ -39,3 +79,7 @@ Sevval İclal Cebecioglu:[:link:][Sevval_Iclal_Cebecioglu]
 
 
 ![Our Team](https://hackmd.io/_uploads/ByyzmrKdA.png)
+
+
+
+
