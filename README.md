@@ -68,7 +68,7 @@ Run the server
 ## ![Our Team](https://hackmd.io/_uploads/r1b0lBFu0.png)
 
  Aslı Soylu : [:link:][Asli_Soylu]
-Mem Robinç Çen:[:link:][Mem_Robin_Cen]
+Mem Robin Çen:[:link:][Mem_Robin_Cen]
 Zehra İntizamoglu:[:link:][Zehra_Intizamoglu]
 Sevval İclal Cebecioglu:[:link:][Sevval_Iclal_Cebecioglu]
 
