@@ -1,9 +1,3 @@
----
-title: My first HackMD note (change me!)
-tags: [Tag(change me!)]
-
----
-
 ![Blue and Black Minimalist Travel Agency Email Header](https://hackmd.io/_uploads/rkfUN4t_A.png)
 
 
