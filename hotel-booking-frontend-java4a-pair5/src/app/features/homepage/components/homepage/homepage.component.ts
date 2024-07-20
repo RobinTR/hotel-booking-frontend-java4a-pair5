@@ -61,11 +61,10 @@ export class HomepageComponent implements OnInit {
       this.document.defaultView?.localStorage?.setItem('oldUser', 'true');
       return;
     }
-    
+
     setTimeout(() => {
       this.isOldUser = isOldUser;
       this.change.markForCheck();
     }, 1000);
   }
-
 }

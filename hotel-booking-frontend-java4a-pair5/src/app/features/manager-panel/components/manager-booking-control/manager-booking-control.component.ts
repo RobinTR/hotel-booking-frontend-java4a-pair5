@@ -39,7 +39,7 @@ export class ManagerBookingControlComponent implements OnInit {
           this.bookings = bookings;
         },
         error: (error) => {
-          console.error('There was an error searching hotels by !', error);
+          console.error('There was an error searching reservations: ', error);
         },
       });
   }

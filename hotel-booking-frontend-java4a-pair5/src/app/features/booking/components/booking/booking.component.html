@@ -1,98 +1,102 @@
 <div class="container-xxl py-5">
-    <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h6 class="section-title text-center text-primary text-uppercase">Room Booking</h6>
-            <h1 class="mb-5">Book A <span class="text-primary text-uppercase">Luxury Room</span></h1>
-        </div>
-        <div class="row g-5">
-            <div class="col-lg-6">
-                <div class="row g-3">
-                    <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="layout-assets/img/rgnm.jpg" style="margin-top: 25%;">
-                    </div>
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="layout-assets/img/rgnm1.jpg">
-                    </div>
-                    <div class="col-6 text-end">
-                        <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="layout-assets/img/rgnm3.jpg">
-                    </div>
-                    <div class="col-6 text-start">
-                        <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="layout-assets/img/rgnm4.jpg">
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="wow fadeInUp" data-wow-delay="0.2s">
-                  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
-                    <div class="row g-3">
-                        <div class="col-12">
-                            <h6>Contact Information</h6>
-                          </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Your Email">
-                          <label for="email">Email</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating">
-                          <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="Phone">
-                          <label for="phone">Phone</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating date" id="date3" data-target-input="nearest">
-                          <input type="date" class="form-control datetimepicker-input" id="checkin" formControlName="checkIn" placeholder="Check In" />
-                          <label for="checkin">Check In</label>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-floating date" id="date4" data-target-input="nearest">
-                          <input type="date" class="form-control datetimepicker-input" id="checkout" formControlName="checkOut" placeholder="Check Out" />
-                          <label for="checkout">Check Out</label>
-                        </div>
-                      </div>
-                      <div class="col-md-12">
-                        <div class="form-floating">
-                          <select class="form-select" id="select1" formControlName="numberOfPeople">
-                            <option *ngFor="let i of [1,2,3,4]" [value]="i">{{i}}</option>
-                          </select>
-                          <label for="select1">Number of People</label>
-                        </div>
-                      </div>
-                      <div formArrayName="people" class="col-12">
-                        <div *ngFor="let person of people.controls; let i = index" [formGroupName]="i" class="row g-3">
-                          <div class="col-12">
-                            <h6>Person {{i + 1}} Information</h6>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-floating">
-                              <input type="text" class="form-control" placeholder="Person First Name" formControlName="firstName">
-                              <label>First Name</label>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <div class="form-floating">
-                              <input type="text" class="form-control" placeholder="Person Last Name" formControlName="lastName">
-                              <label>Last Name</label>
-                            </div>
-                          </div>
-                          <div class="col-md-12">
-                            <div class="form-floating">
-                              <input type="date" class="form-control" formControlName="birthDate">
-                              <label>Birth Date</label>
-                            </div>
-                          </div>
-                          
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>            
-        </div>
+  <div class="container">
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+      <h6 class="section-title text-center text-primary text-uppercase">Room Booking</h6>
+      <h1 class="mb-5">Book A <span class="text-primary text-uppercase">Luxury Room</span></h1>
     </div>
+    <div class="row g-5">
+      <div class="col-lg-6">
+        <div class="row g-3">
+          <div class="col-6 text-end">
+            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.1s" src="layout-assets/img/rgnm.jpg"
+              style="margin-top: 25%;">
+          </div>
+          <div class="col-6 text-start">
+            <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.3s" src="layout-assets/img/rgnm1.jpg">
+          </div>
+          <div class="col-6 text-end">
+            <img class="img-fluid rounded w-50 wow zoomIn" data-wow-delay="0.5s" src="layout-assets/img/rgnm3.jpg">
+          </div>
+          <div class="col-6 text-start">
+            <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.7s" src="layout-assets/img/rgnm4.jpg">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="wow fadeInUp" data-wow-delay="0.2s">
+          <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+            <div class="row g-3">
+              <div class="col-12">
+                <h6>Contact Information</h6>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="email" class="form-control" id="email" formControlName="email" placeholder="Your Email">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <input type="tel" class="form-control" id="phone" formControlName="phone" placeholder="Phone">
+                  <label for="phone">Phone</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating date" id="date3" data-target-input="nearest">
+                  <input type="date" class="form-control datetimepicker-input" id="checkin" formControlName="checkIn"
+                    placeholder="Check In" />
+                  <label for="checkin">Check In</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating date" id="date4" data-target-input="nearest">
+                  <input type="date" class="form-control datetimepicker-input" id="checkout" formControlName="checkOut"
+                    placeholder="Check Out" />
+                  <label for="checkout">Check Out</label>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-floating">
+                  <select class="form-select" id="select1" formControlName="numberOfPeople">
+                    <option *ngFor="let i of [1,2,3,4]" [value]="i">{{i}}</option>
+                  </select>
+                  <label for="select1">Number of People</label>
+                </div>
+              </div>
+              <div formArrayName="people" class="col-12">
+                <div *ngFor="let person of people.controls; let i = index" [formGroupName]="i" class="row g-3">
+                  <div class="col-12">
+                    <h6>Person {{i + 1}} Information</h6>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Person First Name"
+                        formControlName="firstName">
+                      <label>First Name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-floating">
+                      <input type="text" class="form-control" placeholder="Person Last Name" formControlName="lastName">
+                      <label>Last Name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      <input type="date" class="form-control" formControlName="birthDate">
+                      <label>Birth Date</label>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

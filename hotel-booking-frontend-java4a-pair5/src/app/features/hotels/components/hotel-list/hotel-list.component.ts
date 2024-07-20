@@ -62,8 +62,6 @@ export class HotelListComponent implements OnInit, OnChanges {
     }
   }
 
-
-
   getHotelList(pageIndex: number, pageSize: number) {
     this.hotelsService
       .getList(pageIndex, pageSize, this.filterByHotelId)
@@ -85,7 +83,6 @@ export class HotelListComponent implements OnInit, OnChanges {
           next: (hotelList) => {
             this.hotelList = hotelList;
             this.change.markForCheck();
-
           },
           error: (error) => {
             console.error('There was an error searching hotels by location!', error);
@@ -96,14 +93,11 @@ export class HotelListComponent implements OnInit, OnChanges {
 
   searchHotelsByDate() {
     if (this.startDate && this.endDate) {
-      console.log(this.startDate, this.endDate);
-
       this.hotelsService.searchByDate(this.startDate!, this.endDate!)
         .subscribe({
           next: (hotelList) => {
             this.hotelList = hotelList;
             this.change.markForCheck();
-
           },
           error: (error) => {
             console.error('There was an error searching hotels by !', error);
@@ -111,15 +105,14 @@ export class HotelListComponent implements OnInit, OnChanges {
         });
     }
   }
+
   searchHotelsByPerson() {
     if (this.person) {
       this.hotelsService.searchByPerson(this.person)
         .subscribe({
           next: (hotelList) => {
-
             this.hotelList = hotelList;
             this.change.markForCheck();
-
           },
           error: (error) => {
             console.error('There was an error searching hotels by location!', error);
@@ -132,6 +125,7 @@ export class HotelListComponent implements OnInit, OnChanges {
     this.getHotelList(requestedPageIndex, this.hotelList.pageSize);
     this.changePage.emit(requestedPageIndex);
   }
+
   sortBy(criteria: string) {
     if (!this.hotelList || !this.hotelList.items) {
       console.error('Hotel list or items are not defined.');
@@ -149,9 +143,10 @@ export class HotelListComponent implements OnInit, OnChanges {
         this.sortedHotelList = this.sortByStarRating();
         break;
       default:
-        this.sortedHotelList = this.hotelList.items.slice(); // Varsayılan olarak herhangi bir sıralama yapma
+        this.sortedHotelList = this.hotelList.items.slice();
         break;
     }
+
     this.change.detectChanges();
   }
 
@@ -216,5 +211,4 @@ export class HotelListComponent implements OnInit, OnChanges {
         }
       });
   }
-
 }

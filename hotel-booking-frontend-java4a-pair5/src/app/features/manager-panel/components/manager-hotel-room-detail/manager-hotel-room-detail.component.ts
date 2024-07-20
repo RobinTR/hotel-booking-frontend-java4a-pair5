@@ -99,5 +99,4 @@ export class ManagerHotelRoomDetailComponent implements OnInit {
   refreshPage() {
     this.location.go(this.location.path());
   }
-
 }

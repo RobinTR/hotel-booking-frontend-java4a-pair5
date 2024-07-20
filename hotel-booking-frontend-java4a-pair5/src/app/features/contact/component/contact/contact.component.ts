@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ContactService } from '../../services/contact.service';
-import { error } from 'console';
 
 
 @Component({
@@ -17,7 +16,7 @@ export class ContactComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private contactService: ContactService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.supportForm = this.fb.group({
@@ -35,8 +34,7 @@ export class ContactComponent implements OnInit {
         .subscribe({
           next: (response) => {
             console.log('Form Data Submitted:', response);
-            this.supportForm.reset(); // Formu sıfırla
-            // Form submit işlemlerini burada devam ettirebilirsiniz
+            this.supportForm.reset();
           },
           error: (error) => {
             console.error('Error submitting form:', error);
