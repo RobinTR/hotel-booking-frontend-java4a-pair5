@@ -44,7 +44,7 @@ Run the server
 ![Hotel_Booking](https://hackmd.io/_uploads/BycsxBFdA.png)
 
 
-![homepage](https://drive.google.com/file/d/1ru269OnsLbDXqfT6n9P-1b-yvrRtWfd4/view)
+![homepage](https://github.com/user-attachments/assets/1bea47b1-b70a-42d2-82c0-2e2724d7c7bc)
 
 ![homepage2](https://hackmd.io/_uploads/rkPKUrY_0.png)
 
